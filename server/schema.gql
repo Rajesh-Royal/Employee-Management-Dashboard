@@ -2,6 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type EmployeeCreateMutationModel {
+  _id: ID
+  firstName: String
+  lastName: String
+  email: String
+  city: String
+  ctc: Float
+}
+
 type Query {
-  sayHello: String!
+  employeeListRead: [EmployeeCreateMutationModel!]!
+}
+
+type Mutation {
+  employeeCreate(_id: ID, firstName: String, lastName: String, email: String, city: String, ctc: Float): EmployeeCreateMutationModel!
 }
