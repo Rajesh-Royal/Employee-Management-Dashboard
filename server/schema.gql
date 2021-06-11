@@ -2,6 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type EmployeeCreateMutationModel {
+  _id: ID
+  firstName: String
+  lastName: String
+}
+
 type Query {
   sayHello: String!
+}
+
+type Mutation {
+  employeeCreate(_id: ID, firstName: String, lastName: String): EmployeeCreateMutationModel!
 }
