@@ -14,15 +14,33 @@ export class EmployeeCreateMutationModel {
     @Field(() => String, {
         nullable: true
     })
-    public readonly firstName?: string = undefined;
+    public readonly firstName: string = undefined;
 
     @Field(() => String, {
         nullable: true
     })
     public readonly lastName?: string = undefined;
 
+    @Field(() => String, {
+        nullable: true
+    })
+    public readonly email: string = undefined;
+
+    @Field(() => String, {
+        nullable: true
+    })
+    public readonly city?: string = undefined;
+
+    @Field(() => Number, {
+        nullable: true
+    })
+    public readonly ctc: number = undefined;
+
     constructor(initialValue?: any){
         this.firstName = initialValue?.firstName;
         this.lastName = initialValue?.lastName;
+        this.email = initialValue?.email;
+        this.city = initialValue?.city;
+        this.ctc = initialValue?.ctc;
     }
 }

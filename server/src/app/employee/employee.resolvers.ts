@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { EmployeeCreateMutationModel } from "./employee.mutation.model";
 import { EmployeeMutationService } from "./employee.mutation.service";
-import { EmployeeType } from "./employee.type";
+import { EmployeeType } from "../shared/employee.type";
 
 @Resolver()
 export class EmployeeResolvers {
