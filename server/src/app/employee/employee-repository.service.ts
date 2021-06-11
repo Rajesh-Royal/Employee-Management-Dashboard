@@ -20,4 +20,8 @@ export class EmployeeRepositoryService {
         ...(operation.ctc !== undefined && { ctc: operation.ctc }),
       }).save();
   }
+
+  public async getAllEmployees(): Promise<EmployeeType[]> {
+    return await this.EmployeeTypeModel.find().exec();
+  }
 }

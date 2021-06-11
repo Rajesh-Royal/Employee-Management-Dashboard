@@ -4,6 +4,7 @@ import { EmployeeRepositoryService } from './employee-repository.service';
 import { EmployeeMutationService } from './employee.mutation.service';
 import { EmployeeResolvers } from './employee.resolvers';
 import { EmployeeSchema } from './employee.schema';
+import { EmployeeListReadQueryService } from './services/employee-list-read.query.service';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { EmployeeSchema } from './employee.schema';
   providers: [
     EmployeeResolvers,
     EmployeeRepositoryService,
-    EmployeeMutationService
+    EmployeeMutationService,
+    EmployeeListReadQueryService
   ],
   exports: [
     MongooseModule,

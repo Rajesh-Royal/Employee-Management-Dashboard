@@ -12,7 +12,7 @@ type EmployeeCreateMutationModel {
 }
 
 type Query {
-  sayHello: String!
+  employeeListRead: [EmployeeCreateMutationModel!]!
 }
 
 type Mutation {

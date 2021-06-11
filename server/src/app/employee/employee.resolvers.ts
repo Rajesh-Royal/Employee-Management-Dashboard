@@ -2,16 +2,19 @@ import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { EmployeeCreateMutationModel } from "./employee.mutation.model";
 import { EmployeeMutationService } from "./employee.mutation.service";
 import { EmployeeType } from "../shared/employee.type";
+import { EmployeeListReadQueryService } from "./services/employee-list-read.query.service";
 
 @Resolver()
 export class EmployeeResolvers {
 
-  constructor(private employeeMutationService: EmployeeMutationService) {
+  constructor(
+    private employeeMutationService: EmployeeMutationService,
+    private employeeListReadQueryService: EmployeeListReadQueryService) {
   }
 
-  @Query(() => String)
-  public sayHello(): string {
-    return "Hello World"
+  @Query(() => [EmployeeCreateMutationModel])
+  public employeeListRead(): GraphQLResolverResult<EmployeeType[]> {
+    return this.employeeListReadQueryService.serve().then(result => result);
   }
 
   @Mutation(() => EmployeeCreateMutationModel)
