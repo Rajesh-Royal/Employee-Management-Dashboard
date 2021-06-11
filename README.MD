@@ -10,6 +10,8 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 
 This project usages Yarn as package manager and in the project directory, you can run:
 
+#### Client Scripts
+
 | Script             | Description                   |
 |--------------------|-------------------------------|
 | `start:dev`        | Starts the development server |
@@ -26,7 +28,7 @@ This project usages Yarn as package manager and in the project directory, you ca
 A quick look at the top-level files and directories you'll see in this project.
 
 <details>
-  <summary>Server</summary>
+  <summary>Client</summary>
 
     ├── .vscode
     ├── node_modules
