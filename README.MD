@@ -17,7 +17,7 @@ This project usages Yarn as package manager and in the project directory, you ca
 |  `test`            | Runs unit tests                           | `start:debug`       | Starts the server in debug mode     |
 |  `eject`           | [React Eject](https://bit.ly/2TOYE0A)     | `start:prod`        | Runs prod server, run `build` first |
 | `lint`             | Shows all the linting errors in codebase  | `lint`              | Fix all the liting errors           |
-| `lint:fix`         | Fix all the liting errors |
+| `lint:fix`         | Fix all the liting errors                 | `build`            | Production build                     |
 
 > Husky hooks will lint code in client folder before commiting it.
 
