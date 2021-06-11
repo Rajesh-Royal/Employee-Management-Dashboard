@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { EmployeeCreateMutationModel } from './employee.mutation.model';
+import { EmployeeCreateMutationModel } from './services/employee.mutation.model';
 import { EmployeeType } from '../shared/employee.type';
 
 @Injectable()
