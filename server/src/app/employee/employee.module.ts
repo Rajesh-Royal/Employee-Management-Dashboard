@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EmployeeRepositoryService } from './employee-repository.service';
-import { EmployeeMutationService } from './employee.mutation.service';
+import { EmployeeMutationService } from './services/employee.mutation.service';
 import { EmployeeResolvers } from './employee.resolvers';
 import { EmployeeSchema } from './employee.schema';
 import { EmployeeListReadQueryService } from './services/employee-list-read.query.service';

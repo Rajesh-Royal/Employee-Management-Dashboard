@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { EmployeeRepositoryService } from './employee-repository.service';
+import { EmployeeRepositoryService } from '../employee-repository.service';
 import { EmployeeCreateMutationModel } from './employee.mutation.model';
-import { EmployeeType } from '../shared/employee.type';
+import { EmployeeType } from '../../shared/employee.type';
 
 
 @Injectable()

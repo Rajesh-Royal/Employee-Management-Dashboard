@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { EmployeeCreateMutationModel } from "./employee.mutation.model";
-import { EmployeeMutationService } from "./employee.mutation.service";
+import { EmployeeCreateMutationModel } from "./services/employee.mutation.model";
+import { EmployeeMutationService } from "./services/employee.mutation.service";
 import { EmployeeType } from "../shared/employee.type";
 import { EmployeeListReadQueryService } from "./services/employee-list-read.query.service";
 
