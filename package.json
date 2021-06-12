@@ -13,8 +13,7 @@
     "install:server:client": "concurrently \"yarn install --production=false\" \"yarn install:client\"  \"yarn install:server\"",
     "start:client": "cd client && yarn start:dev",
     "start:server": "cd server && yarn start:dev",
-    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\"",
-    "prepare": "husky install"
+    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\""
   },
   "dependencies": {
     "concurrently": "^6.2.0"
