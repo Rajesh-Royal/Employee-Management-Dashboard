@@ -2,7 +2,7 @@
 
 <div align="center">
 
-This project Is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and using tailwindcss for UI library.
+This project Is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and using tailwindcss for UI library. Backend is built with node.js on top of NestJS and MongoDB.
 
 </div>
 
