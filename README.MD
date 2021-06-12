@@ -22,7 +22,7 @@ This project usages Yarn as package manager and in the project directory, you ca
 | `install:server:client`  | Install server and client npm packages                   |
 
 <details>
-  <summary>### Individual scripts</summary>
+  <summary># <b>Individual scripts</b></summary>
 
 | Client Script      | Description                               | Server Script      | Description                         |
 |--------------------|-------------------------------------------|--------------------|-------------------------------------|
