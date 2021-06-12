@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { EmployeeRepositoryService } from '../employee-repository.service';
-import { EmployeeType } from '../../shared/employee.type';
 import { EmployeeReadQueryModel } from './employee-list-read-query.model';
 
 
