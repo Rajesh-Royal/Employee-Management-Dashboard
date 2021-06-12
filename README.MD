@@ -68,6 +68,20 @@ A quick look at the top-level files and directories you'll see in this project.
 </details>
 1. **`.vscode/`**: This directory contains all of the workspace setting for vscode.
 
+### Notes
+
+- if husky hooks not working it can be because of husky didn't created hooks in `.husky` directory. To fix this run the following commands in root of this project.
+
+```json
+yarn add -D husky
+
+npm set-script prepare "husky install" && yarn prepare // don't worry if this not work It just add prepare script to npm Scripts which is already added.
+
+npx husky add .husky/pre-commit "yarn lint-staged"
+
+git commit -m "added husky and lint-stagged" // here you will notice the lint-staged checking the files with help of husky
+```
+
 ## 💫 Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Rajesh-Royal/Employee-Management-Dashboard)
