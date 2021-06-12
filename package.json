@@ -33,7 +33,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
+      "eslint ./client/src/**/*.{js,jsx,ts,tsx} --fix"
     ]
   }
 }
