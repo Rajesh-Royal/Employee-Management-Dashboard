@@ -22,7 +22,7 @@ export class EmployeeRepositoryService {
   }
 
   public async getAllEmployees(): Promise<EmployeeType[]> {
-    return await this.EmployeeTypeModel.find().exec();
+    return await this.EmployeeTypeModel.find().populate("salary").exec();
   }
 
 
