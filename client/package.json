@@ -13,7 +13,7 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
-    "lint:fix": "eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
+    "lint:fix": "prettier ./src/**/*.{js,jsx,ts,tsx} --write && eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
   },
   "dependencies": {
     "@craco/craco": "^6.1.2",
