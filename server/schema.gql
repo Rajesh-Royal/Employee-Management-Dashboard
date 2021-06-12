@@ -34,7 +34,7 @@ type EmployeeReadQueryModel {
 
 type Query {
   employeeListRead: [EmployeeReadQueryModel!]!
-  employeeRead(employeeId: String!): EmployeeReadQueryModel!
+  employeeRead(employeeId: ID): EmployeeReadQueryModel!
   employeeSalaryRead(employeeId: String!): EmployeeSalaryReadQueryModel!
 }
 

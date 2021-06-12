@@ -5,6 +5,7 @@ import { EmployeeType } from "../shared/employee.type";
 import { EmployeeListReadQueryService } from "./services/employee-list-read.query.service";
 import { EmployeeReadQueryModel } from "./services/employee-list-read-query.model";
 import { EmployeeReadQueryService } from "./services/employee-read-query.service";
+import { SingleEmployeeReadQueryModel } from "./services/employee-read-query.model";
 
 @Resolver()
 export class EmployeeResolvers {
@@ -22,8 +23,9 @@ export class EmployeeResolvers {
   }
 
   @Query(() => EmployeeReadQueryModel)
-  public employeeRead(@Args("employeeId") employeeId: string): GraphQLResolverResult<EmployeeType> {
-    return this.employeeReadQueryService.serve(employeeId).then(result => result);
+  public employeeRead(@Args() arguments_: SingleEmployeeReadQueryModel): GraphQLResolverResult<EmployeeType> {
+    const operation = new SingleEmployeeReadQueryModel(arguments_)
+    return this.employeeReadQueryService.serve(operation).then(result => result);
   }
 
   @Mutation(() => EmployeeCreateMutationModel)
