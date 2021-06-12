@@ -10,6 +10,20 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 
 This project usages Yarn as package manager and in the project directory, you can run:
 
+### Root scripts
+
+| Client Script            | Description                                              |
+|--------------------------|----------------------------------------------------------|
+| `start:client`           | Starts the development server of client                  |
+| `start:server`           | Starts the development server of server                  |
+| `start:all`              | Starts the development server of client and server both  |
+| `install:server`         | Install server npm packages                              |
+| `install:client`         | Install client npm packages                              |
+| `install:server:client`  | Install server and client npm packages                   |
+
+<details>
+  <summary>### Individual scripts</summary>
+
 | Client Script      | Description                               | Server Script      | Description                         |
 |--------------------|-------------------------------------------|--------------------|-------------------------------------|
 | `start:dev`        | Starts the development server             | `start`             | Starts the server                   |
@@ -18,6 +32,8 @@ This project usages Yarn as package manager and in the project directory, you ca
 |  `eject`           | [React Eject](https://bit.ly/2TOYE0A)     | `start:prod`        | Runs prod server, run `build` first |
 | `lint`             | Shows all the linting errors in codebase  | `lint`              | Fix all the liting errors           |
 | `lint:fix`         | Fix all the liting errors                 | `build`            | Production build                     |
+
+</details>
 
 > Husky hooks will lint code in client folder before commiting it.
 
