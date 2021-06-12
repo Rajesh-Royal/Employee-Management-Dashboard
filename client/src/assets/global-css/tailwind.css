@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+.salary-table tbody tr:nth-child(odd){
+  @apply bg-gray-50;
+}
+
 .bid-ripple {
     display: inline-block;
         position: relative;
