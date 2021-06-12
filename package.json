@@ -16,6 +16,7 @@
     "start:all": "concurrently \"yarn start:client\" \"yarn start:server\""
   },
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "concurrently": "^6.2.0"
   },
   "devDependencies": {
