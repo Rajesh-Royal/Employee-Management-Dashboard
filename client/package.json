@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "craco start",
+    "start:dev": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
