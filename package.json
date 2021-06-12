@@ -1,0 +1,21 @@
+{
+  "name": "employee-management-nestjs-graphql",
+  "version": "1.0.0",
+  "description": "dummy",
+  "main": "index.js",
+  "repository": "https://github.com/Rajesh-Royal/Employee-Management-Dashboard.git",
+  "author": "<rajeshroyal896@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "install:client": "cd client && yarn install",
+    "install:server": "cd server && yarn install",
+    "install:server:client": "concurrently \"yarn install:client\"  \"yarn install:server\"",
+    "start:client": "cd client && yarn start:dev",
+    "start:server": "cd server && yarn start:dev",
+    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\""
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
