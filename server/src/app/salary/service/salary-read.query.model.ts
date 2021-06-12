@@ -1,7 +1,7 @@
 import {
     ArgsType, Field, ID, ObjectType
 } from '@nestjs/graphql';
-import { EmployeeCreateMutationModel } from 'src/app/employee/services/employee.mutation.model';
+import { EmployeeCreateMutationModel } from 'src/app/employee/services/employee-create.mutation.model';
 import { EmployeeType } from 'src/app/shared/employee.type';
 
 @ArgsType()
@@ -44,6 +44,7 @@ export class EmployeeSalaryReadQueryModel {
     public readonly epf?: number = undefined;
 
     constructor(initialValue?: any){
+        this._id = initialValue?._id;
         this.employee = initialValue?.employeeId;
         this.da = initialValue?.da;
         this.pa = initialValue?.pa;
