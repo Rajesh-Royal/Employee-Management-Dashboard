@@ -16,10 +16,12 @@
     "lint:fix": "prettier ./src/**/*.{js,jsx,ts,tsx} --write && eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.20",
     "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
