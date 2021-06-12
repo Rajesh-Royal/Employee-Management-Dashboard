@@ -31,8 +31,6 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
     "postcss": "7",
     "prettier": "^2.3.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
@@ -41,19 +39,6 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-      "post-applypatch": "echo \"[Husky] post-applypatch\"",
-      "pre-commit": "echo \"[Husky] pre-commit\""
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
     ]
   },
   "browserslist": {

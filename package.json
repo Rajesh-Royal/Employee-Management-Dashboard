@@ -10,13 +10,30 @@
   "scripts": {
     "install:client": "cd client && yarn install --production=false",
     "install:server": "cd server && yarn install --production=false",
-    "install:server:client": "concurrently \"yarn install:client\"  \"yarn install:server\"",
+    "install:server:client": "concurrently \"yarn install --production=false\" \"yarn install:client\"  \"yarn install:server\"",
     "start:client": "cd client && yarn start:dev",
     "start:server": "cd server && yarn start:dev",
-    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\""
+    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "concurrently": "^6.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+      "post-applypatch": "echo \"[Husky] post-applypatch\"",
+      "pre-commit": "echo \"[Husky] pre-commit runs\""
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
+    ]
+  }
 }
