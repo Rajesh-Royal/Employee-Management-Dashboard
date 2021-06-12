@@ -15,7 +15,7 @@ function Layout() {
       <Header />
       <Container>
         <GlobalErrorBoundary>
-          <Suspense fallback={<ThemedSuspense />}>
+          <Suspense fallback={<ThemedSuspense className="mt-5" />}>
             <Switch>
               {Routes.map((route, i) => {
                 return route.component ? (
