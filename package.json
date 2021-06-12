@@ -16,12 +16,7 @@
     "start:all": "concurrently \"yarn start:client\" \"yarn start:server\""
   },
   "dependencies": {
-    "@craco/craco": "^6.1.2",
     "concurrently": "^6.2.0"
   },
-  "devDependencies": {
-    "autoprefixer": "9",
-    "postcss": "7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  "devDependencies": {}
 }
