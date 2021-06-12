@@ -1,7 +1,7 @@
 import React from "react";
 import { XOctagon } from "react-feather";
 import { useHistory } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Page404 = () => {
   const history = useHistory();
