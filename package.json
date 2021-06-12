@@ -32,8 +32,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint *.{js,jsx,ts,tsx} --fix"
+    "./client/src/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix"
+    ],
+    "./server/src/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "eslint --fix"
     ]
   }
 }
