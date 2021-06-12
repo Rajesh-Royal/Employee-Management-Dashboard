@@ -12,7 +12,7 @@ import { EmployeeSalaryModel } from './service/salary.model';
 export class SalaryRepositoryService {
     constructor(
         @InjectModel('SalaryType') private readonly SalaryTypeModel: Model<SalaryType>
-    ) {
+         ) {
     }
 
     public createSalary(operation: EmployeeSalaryModel): Promise<SalaryType> {
@@ -26,8 +26,8 @@ export class SalaryRepositoryService {
         }).save();
     }
 
-    public findSalary(operation: EmployeeSalaryReadQueryModel): Promise<SalaryType> {
-        return this.SalaryTypeModel.findOne({ employeeId: operation.employeeId }).populate("employeeId").exec();
+    public findSalary(employeeId: string): Promise<SalaryType> {
+        return this.SalaryTypeModel.findOne({employeeId: employeeId}).populate("employeeId").exec();
     }
 
     public updateSalary(operation: EmployeeSalaryModel): any {

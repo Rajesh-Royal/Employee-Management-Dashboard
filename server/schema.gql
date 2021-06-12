@@ -13,7 +13,7 @@ type EmployeeCreateMutationModel {
 
 type EmployeeSalaryReadQueryModel {
   _id: ID
-  employeeId: String
+  employee: EmployeeCreateMutationModel
   da: Float
   pa: Float
   hra: Float
@@ -23,7 +23,7 @@ type EmployeeSalaryReadQueryModel {
 
 type Query {
   employeeListRead: [EmployeeCreateMutationModel!]!
-  employeeSalaryRead(_id: ID, employeeId: String, da: Float, pa: Float, hra: Float, pt: Float, epf: Float): EmployeeSalaryReadQueryModel!
+  employeeSalaryRead(employeeId: String!): EmployeeSalaryReadQueryModel!
 }
 
 type Mutation {

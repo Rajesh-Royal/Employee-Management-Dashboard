@@ -13,10 +13,10 @@ export class EmployeeSalaryReadQueryModel {
     })
     public readonly _id?: string = undefined;
 
-    @Field(() => String, {
+    @Field(() => EmployeeCreateMutationModel, {
         nullable: true
     })
-    public readonly employeeId: string = undefined;
+    public readonly employee?: EmployeeType = undefined;
 
     @Field(() => Number, {
         nullable: true
@@ -44,7 +44,7 @@ export class EmployeeSalaryReadQueryModel {
     public readonly epf?: number = undefined;
 
     constructor(initialValue?: any){
-        this.employeeId = initialValue?.employeeId;
+        this.employee = initialValue?.employeeId;
         this.da = initialValue?.da;
         this.pa = initialValue?.pa;
         this.hra = initialValue?.hra;

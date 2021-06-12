@@ -10,9 +10,9 @@ export class EmployeeSalaryReadQueryService {
   constructor(private salaryRepositoryService: SalaryRepositoryService) {
   }
 
-  public async serve(operation: EmployeeSalaryReadQueryModel) {
-    const data = await this.salaryRepositoryService.findSalary(operation)
-    console.log(data)
-    return data;
+  public async serve(employeeId: string) {
+    const data = await this.salaryRepositoryService.findSalary(employeeId)
+
+    return new EmployeeSalaryReadQueryModel(data);
   }
 }

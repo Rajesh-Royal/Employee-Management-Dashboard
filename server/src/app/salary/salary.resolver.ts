@@ -17,9 +17,9 @@ export class SalaryResolvers {
   }
 
   @Query(() => EmployeeSalaryReadQueryModel)
-  public employeeSalaryRead(@Args() arguments_: EmployeeSalaryReadQueryModel): GraphQLResolverResult<SalaryType> {
-    const operation = new EmployeeSalaryReadQueryModel(arguments_)
-    return this.employeeSalaryReadQueryService.serve(operation).then(result => result);
+  public employeeSalaryRead(@Args("employeeId") employeeId: string): GraphQLResolverResult<SalaryType> {
+
+    return this.employeeSalaryReadQueryService.serve(employeeId).then(result => result);
   }
 
   @Mutation(() => Boolean)
