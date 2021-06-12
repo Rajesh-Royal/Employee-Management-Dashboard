@@ -82,6 +82,10 @@ npx husky add .husky/pre-commit "yarn lint-staged"
 git commit -m "added husky and lint-stagged" // here you will notice the lint-staged checking the files with help of husky
 ```
 
+- <b>Client</b> application will run at port 3000 if available otherwise it will pick any available port.
+- <b>Server</b> will be running at port 4000. <b>GraphQL</b> playground is available at `URL:4000/graphql`
+- Server usages default mongoDB port which is `27017`, check `server/src/app/app.module.ts` for details.
+
 ## 💫 Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Rajesh-Royal/Employee-Management-Dashboard)
