@@ -19,7 +19,7 @@ This project usages Yarn as package manager and in the project directory, you ca
 | `start:all`              | Starts the development server of client and server both  |
 | `install:server`         | Install server npm packages                              |
 | `install:client`         | Install client npm packages                              |
-| `install:server:client`  | Install server and client npm packages                   |
+| `install:server:client`  | Install server and client's npm packages                   |
 
 <details>
   <summary># <b>Individual scripts</b></summary>
