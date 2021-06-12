@@ -1,13 +1,10 @@
 import {
     ArgsType, Field, ID, ObjectType
 } from '@nestjs/graphql';
-import { EmployeeSalaryReadQueryModel } from 'src/app/salary/service/salary-read.query.model';
-import { EmployeeType } from 'src/app/shared/employee.type';
-import { SalaryType } from 'src/app/shared/salary.type';
 
 @ArgsType()
 @ObjectType()
-export class EmployeeReadQueryModel {
+export class EmployeeCreateMutationModel {
 
     @Field(() => ID, {
         nullable: true
@@ -39,19 +36,13 @@ export class EmployeeReadQueryModel {
     })
     public readonly ctc: number = undefined;
 
-    @Field(() => EmployeeSalaryReadQueryModel, {
-        nullable: true
-    })
-    public readonly salary?: SalaryType = undefined;
 
-
-    constructor(initialValue?: EmployeeType){
+    constructor(initialValue?: any){
         this._id = initialValue?._id;
         this.firstName = initialValue?.firstName;
         this.lastName = initialValue?.lastName;
         this.email = initialValue?.email;
         this.city = initialValue?.city;
         this.ctc = initialValue?.ctc;
-        this.salary = initialValue?.salary
     }
 }

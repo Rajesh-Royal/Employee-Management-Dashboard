@@ -6,8 +6,4 @@ export const EmployeeSchema = new mongoose.Schema({
     email: String,
     city: String,
     ctc: String,
-    salary: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'SalaryType'
-    }
 });

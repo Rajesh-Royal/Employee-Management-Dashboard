@@ -1,5 +1,4 @@
 import { Document } from 'mongoose';
-import { SalaryType } from './salary.type';
 
 export interface EmployeeType extends Document {
   _id?: string;
@@ -7,6 +6,5 @@ export interface EmployeeType extends Document {
   lastName: string;
   email: string;
   city: string;
-  ctc: number;
-  salary?: SalaryType
+  ctc: number
 }
