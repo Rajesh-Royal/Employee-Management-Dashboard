@@ -37,6 +37,7 @@ export class EmployeeCreateMutationModel {
     public readonly ctc: number = undefined;
 
     constructor(initialValue?: any){
+        this._id = initialValue?._id;
         this.firstName = initialValue?.firstName;
         this.lastName = initialValue?.lastName;
         this.email = initialValue?.email;

@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { EmployeeModule } from './employee/employee.module';
-import { EmployeeResolvers } from './employee/employee.resolvers';
+import { SalaryModule } from './salary/salary.module';
 
 
 @Module({
@@ -19,7 +19,8 @@ import { EmployeeResolvers } from './employee/employee.resolvers';
       useCreateIndex: true
     }),
     ScheduleModule.forRoot(),
-    EmployeeModule
+    EmployeeModule,
+    SalaryModule
   ],
 
 })

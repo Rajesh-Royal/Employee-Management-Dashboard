@@ -11,10 +11,22 @@ type EmployeeCreateMutationModel {
   ctc: Float
 }
 
+type EmployeeSalaryReadQueryModel {
+  _id: ID
+  employeeId: String
+  da: Float
+  pa: Float
+  hra: Float
+  pt: Float
+  epf: Float
+}
+
 type Query {
   employeeListRead: [EmployeeCreateMutationModel!]!
+  employeeSalaryRead(_id: ID, employeeId: String, da: Float, pa: Float, hra: Float, pt: Float, epf: Float): EmployeeSalaryReadQueryModel!
 }
 
 type Mutation {
   employeeCreate(_id: ID, firstName: String, lastName: String, email: String, city: String, ctc: Float): EmployeeCreateMutationModel!
+  employeeSalaryUpdate(_id: ID, employeeId: String, da: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
 }

@@ -10,7 +10,7 @@ export class EmployeeRepositoryService {
     @InjectModel('EmployeeType') private readonly EmployeeTypeModel: Model<EmployeeType>,
   ) {
   }
-
+// employee
   public async createEmployee(operation: EmployeeCreateMutationModel): Promise<EmployeeType> {
       return await new this.EmployeeTypeModel({
         ...(operation.firstName !== undefined && { firstName: operation.firstName }),
@@ -24,4 +24,6 @@ export class EmployeeRepositoryService {
   public async getAllEmployees(): Promise<EmployeeType[]> {
     return await this.EmployeeTypeModel.find().exec();
   }
+
+
 }
