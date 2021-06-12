@@ -44,7 +44,6 @@ export class EmployeeSalaryReadQueryModel {
     public readonly epf?: number = undefined;
 
     constructor(initialValue?: any){
-        console.log(initialValue)
         this._id = initialValue?._id;
         this.employee = initialValue?.employeeId;
         this.da = initialValue?.da;
