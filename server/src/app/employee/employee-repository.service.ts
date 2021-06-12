@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { EmployeeCreateMutationModel } from './services/employee-create.mutation.model';
 import { EmployeeType } from '../shared/employee.type';
+import { SingleEmployeeReadQueryModel } from './services/employee-read-query.model';
 
 @Injectable()
 export class EmployeeRepositoryService {
@@ -26,8 +27,8 @@ export class EmployeeRepositoryService {
     return await this.EmployeeTypeModel.find().populate("salary").exec();
   }
 
-  public async readAnEmployee(employeeId: string): Promise<EmployeeType> {
-    return await this.EmployeeTypeModel.findOne({_id: employeeId}).populate("salary").exec();
+  public async readAnEmployee(operation: SingleEmployeeReadQueryModel): Promise<EmployeeType> {
+    return await this.EmployeeTypeModel.findOne({_id: operation.employeeId}).populate("salary").exec();
   }
 
 
