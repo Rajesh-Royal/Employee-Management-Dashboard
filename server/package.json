@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "nest start",
-    "start:prod": "node dist/main",
-    "prebuild": "rimraf dist",
+    "start:prod": "yarn build && node dist/main",
+    "prebuildd": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:dev": "nest start --watch",
