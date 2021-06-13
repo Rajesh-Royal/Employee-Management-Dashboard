@@ -4,11 +4,11 @@
 
 type EmployeeCreateMutationModel {
   _id: ID
-  firstName: String
+  firstName: String!
   lastName: String
-  email: String
+  email: String!
   city: String
-  ctc: Float
+  ctc: Float!
   salary: ID
 }
 
@@ -40,6 +40,6 @@ type Query {
 }
 
 type Mutation {
-  employeeCreate(_id: ID, firstName: String, lastName: String, email: String, city: String, ctc: Float, salary: ID): EmployeeCreateMutationModel!
+  employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
 }

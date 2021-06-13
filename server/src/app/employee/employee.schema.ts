@@ -5,7 +5,7 @@ export const EmployeeSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     city: String,
-    ctc: String,
+    ctc: Number,
     salary: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SalaryType'

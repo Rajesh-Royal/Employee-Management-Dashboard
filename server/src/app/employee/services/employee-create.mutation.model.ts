@@ -1,9 +1,7 @@
 import {
     ArgsType, Field, ID, ObjectType
 } from '@nestjs/graphql';
-import { EmployeeSalaryModel } from 'src/app/salary/service/salary.model';
-import { EmployeeType } from 'src/app/shared/employee.type';
-import { SalaryType } from 'src/app/shared/salary.type';
+import { IsNotEmpty } from "class-validator"
 
 @ArgsType()
 @ObjectType()
@@ -14,9 +12,8 @@ export class EmployeeCreateMutationModel {
     })
     public readonly _id?: string = undefined;
 
-    @Field(() => String, {
-        nullable: true
-    })
+    @IsNotEmpty()
+    @Field(() => String)
     public readonly firstName: string = undefined;
 
     @Field(() => String, {
@@ -24,9 +21,7 @@ export class EmployeeCreateMutationModel {
     })
     public readonly lastName?: string = undefined;
 
-    @Field(() => String, {
-        nullable: true
-    })
+    @Field(() => String)
     public readonly email: string = undefined;
 
     @Field(() => String, {
@@ -34,9 +29,7 @@ export class EmployeeCreateMutationModel {
     })
     public readonly city?: string = undefined;
 
-    @Field(() => Number, {
-        nullable: true
-    })
+    @Field(() => Number)
     public readonly ctc: number = undefined;
 
     @Field(() => ID, {
