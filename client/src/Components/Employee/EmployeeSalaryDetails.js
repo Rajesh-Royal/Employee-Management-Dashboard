@@ -5,13 +5,18 @@ import { useMutation } from "@apollo/client";
 import FormInputBox from "./FormInputBox";
 import { SectionHeadingSmall, SectionHeading } from "../Typography";
 import Button from "../Button";
-import { EMPLOYEE_SALARY_UPDATE } from "../../core/gql-operations/services/update-employee-salary";
+import { EMPLOYEE_SALARY_UPDATE } from "../../core/gql-operations/mutation/update-employee-salary.mutation";
+import { reduceSingleLevelObject } from "../../utility/UtilityFunctions";
 
-const EmployeeDetails = (props) => {
+const EmployeeSalaryDetails = (props) => {
   const salarydata = props?.employeeSalary?.salary;
+  const salaryPerMonth = parseInt(props?.employeeSalary?.ctc / 12);
+
   const [employeeSalaryUpdateMutation] = useMutation(EMPLOYEE_SALARY_UPDATE);
 
   const [salaryStructure, setSalaryStructure] = useState({});
+  const [netCalculatedSalary, setNetCalculatedSalary] = useState(0);
+  const [salaryMaxError, setSalaryMaxError] = useState(false);
 
   useEffect(() => {
     if (salarydata) {
@@ -35,8 +40,30 @@ const EmployeeDetails = (props) => {
         epf: 0,
       });
     }
+
+    setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
+    if (netCalculatedSalary > salaryPerMonth) {
+      setSalaryMaxError(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [salarydata]);
+
+  //   update state on Input change
+  const onSalaryStructureDataChange = (e) => {
+    setSalaryStructure({
+      ...salaryStructure,
+      [e.target.name]: parseInt(e.target.value) || 0,
+    });
+  };
+  // set net calculated salary logic on salarystructure change
+  // useEffect as callback function of setState
+  useEffect(() => {
+    setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
+  }, [salaryStructure]);
+
+  useEffect(() => {
+    netCalculatedSalary > salaryPerMonth ? setSalaryMaxError(true) : setSalaryMaxError(false);
+  }, [netCalculatedSalary]);
 
   return (
     <form
@@ -61,61 +88,41 @@ const EmployeeDetails = (props) => {
             label="Basic Pay"
             icon="₹"
             placeholder="$$"
-            name="basicPay"
+            name="basic"
             type="number"
             ariaLabel="Basic Pay"
             value={salaryStructure?.basic}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                basic: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
           <FormInputBox
             label="Dearness Allowance"
             icon="₹"
             placeholder="$$"
-            name="Dearness Allowance"
+            name="da"
             type="number"
             ariaLabel="Dearness Allowance"
             value={salaryStructure?.da}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                da: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
           <FormInputBox
             label="Personal Allowance"
             icon="₹"
             placeholder="$$"
-            name="Personal Allowance"
+            name="pa"
             type="number"
             ariaLabel="Personal Allowance"
             value={salaryStructure?.pa}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                pa: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
           <FormInputBox
             label="House Rent Allowance"
             icon="₹"
             placeholder="$$"
-            name="House Rent Allowance"
+            name="hra"
             type="number"
             ariaLabel="House Rent Allowance"
             value={salaryStructure?.hra}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                hra: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
         </div>
         {/* employee Deduction Section */}
@@ -129,32 +136,29 @@ const EmployeeDetails = (props) => {
             name="pt"
             type="number"
             value={salaryStructure?.pt}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                pt: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
           <FormInputBox
             label="Employee Provident Fund"
             ariaLabel="Employee Provident Fund"
             icon="₹"
             placeholder="$$"
-            name="Employee Provident Fund"
+            name="epf"
             type="number"
             value={salaryStructure?.epf}
-            onChange={(e) =>
-              setSalaryStructure({
-                ...salaryStructure,
-                epf: parseInt(e.target.value),
-              })
-            }
+            onChange={(e) => onSalaryStructureDataChange(e)}
           />
         </div>
       </div>
-      <div className="flex justify-end items-center">
+      <div className="flex justify-between items-center mt-3">
+        <p>
+          Total salary:{" "}
+          <strong className={`${salaryMaxError ? "text-red-700" : "text-purple-500"}`}>
+            {netCalculatedSalary}
+          </strong>
+        </p>
         <Button
+          disabled={salaryMaxError}
           onClick={() => {
             employeeSalaryUpdateMutation({
               variables: {
@@ -173,4 +177,4 @@ const EmployeeDetails = (props) => {
   );
 };
 
-export default EmployeeDetails;
+export default EmployeeSalaryDetails;
