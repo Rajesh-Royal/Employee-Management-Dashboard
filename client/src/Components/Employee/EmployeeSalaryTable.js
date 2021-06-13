@@ -65,8 +65,8 @@ const EmployeeSalaryTable = (props) => {
       <div
         className="flex flex-col overflow-x-scroll xl:overflow-x-hidden my-3"
         onClick={() => stopPolling()}>
-        <table className="salary-table shadow overflow-hidden sm:rounded-lg ">
-          <thead className="bg-gray-300">
+        <table className="salary-table shadow overflow-hidden sm:rounded-lg divide-y divide-gray-200">
+          <thead className="bg-gray-200">
             <tr className="text-left text-xs font-base text-gray-500 uppercase tracking-wider">
               {tableHeadings.map((heading, index) => {
                 return (
@@ -77,22 +77,22 @@ const EmployeeSalaryTable = (props) => {
               })}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-gray-200">
             {!loading && data ? (
               currentEmployees.map((employee, index) => {
                 return (
                   <tr
-                    className={`bg-gray-100 text-sm text-gray-500 dark:text-gray-400 dark:bg-gray-600 ${
+                    className={`bg-gray-100 text-sm text-gray-500 ${
                       index === activeEmployee ? "active-row" : ""
                     }`}
                     key={employee?._id}>
-                    <td className=" px-7  py-4">{index + 1}</td>
-                    <td className=" px-7  py-4">{employee?.firstName}</td>
-                    <td className=" px-7  py-4">{employee?.lastName}</td>
-                    <td className=" px-7  py-4">{employee?.city}</td>
-                    <td className=" px-7  py-4">{employee?.ctc}</td>
-                    <td className=" px-7  py-4">{(employee?.ctc / 12).toFixed(3)}</td>
-                    <td className=" px-7  py-4">
+                    <td className=" px-7  py-6">{index + 1}</td>
+                    <td className=" px-7  py-6">{employee?.firstName}</td>
+                    <td className=" px-7  py-6">{employee?.lastName}</td>
+                    <td className=" px-7  py-6">{employee?.city}</td>
+                    <td className=" px-7  py-6">{employee?.ctc}</td>
+                    <td className=" px-7  py-6">₹ {(employee?.ctc / 12).toFixed(3)}</td>
+                    <td className=" px-7  py-6">
                       <Button
                         className="text-xs rounded-full"
                         onClick={(e) => {
