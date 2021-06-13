@@ -11,8 +11,11 @@ const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const mongoose_1 = require("@nestjs/mongoose");
 const schedule_1 = require("@nestjs/schedule");
+const config_1 = require("@nestjs/config");
 const employee_module_1 = require("./employee/employee.module");
 const salary_module_1 = require("./salary/salary.module");
+const productionMongoURI = "mongodb+srv://rajesh:rajesh@123@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const localMongoURI = "mongodb://localhost:27017/employeeManagement";
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -22,7 +25,8 @@ AppModule = __decorate([
                 autoSchemaFile: 'schema.gql',
                 playground: true,
             }),
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/employeeManagement', {
+            config_1.ConfigModule.forRoot({ envFilePath: `${process.env.NODE_ENV}.env` }),
+            mongoose_1.MongooseModule.forRoot(productionMongoURI, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
                 useFindAndModify: false,
