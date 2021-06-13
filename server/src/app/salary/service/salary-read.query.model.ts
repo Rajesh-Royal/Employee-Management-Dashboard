@@ -21,6 +21,11 @@ export class EmployeeSalaryReadQueryModel {
     @Field(() => Number, {
         nullable: true
     })
+    public readonly basic?: number = undefined;
+
+    @Field(() => Number, {
+        nullable: true
+    })
     public readonly da?: number = undefined;
 
     @Field(() => Number, {
@@ -47,6 +52,7 @@ export class EmployeeSalaryReadQueryModel {
         console.log(initialValue)
         this._id = initialValue?._id;
         this.employee = initialValue?.employeeId;
+        this.basic = initialValue?.basic;
         this.da = initialValue?.da;
         this.pa = initialValue?.pa;
         this.hra = initialValue?.hra;

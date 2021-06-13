@@ -5,6 +5,7 @@ export const SalarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'EmployeeType'
     },
+    basic: Number,
     da: Number,
     pa: Number,
     hra: Number,

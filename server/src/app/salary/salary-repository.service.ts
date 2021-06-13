@@ -18,11 +18,12 @@ export class SalaryRepositoryService {
     public createSalary(operation: EmployeeSalaryModel): Promise<SalaryType> {
         return new this.SalaryTypeModel({
             ...(operation.employeeId !== undefined && { employeeId: operation.employeeId }),
-            ...(operation.da !== undefined && { da: operation.da }),
-            ...(operation.pa !== undefined && { pa: operation.pa }),
-            ...(operation.hra !== undefined && { hra: operation.hra }),
-            ...(operation.pt !== undefined && { pt: operation.pt }),
-            ...(operation.epf !== undefined && { epf: operation.epf }),
+            ...((operation.da !== null || operation.da !== null) && { da: operation.da }),
+            ...((operation.pa !== undefined || operation.pa !== null) && { pa: operation.pa }),
+            ...((operation.hra !== undefined || operation.hra !== null) && { hra: operation.hra }),
+            ...((operation.pt !== undefined || operation.pt !== null) && { pt: operation.pt }),
+            ...((operation.epf !== undefined || operation.epf !== null) && { epf: operation.epf }),
+            ...((operation.basic !== undefined || operation.basic !== null) && { basic: operation.basic }),
         }).save();
     }
 
@@ -41,6 +42,7 @@ export class SalaryRepositoryService {
                     ...(operation.hra !== undefined && { hra: operation.hra }),
                     ...(operation.pt !== undefined && { pt: operation.pt }),
                     ...(operation.epf !== undefined && { epf: operation.epf }),
+                    ...(operation.basic !== undefined && { basic: operation.basic }),
                 }
             },
             {
