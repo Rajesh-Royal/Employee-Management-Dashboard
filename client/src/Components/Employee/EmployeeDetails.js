@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { XCircle } from "react-feather";
+import { useMutation } from "@apollo/client";
+
 import FormInputBox from "./FormInputBox";
 import { SectionHeadingSmall, SectionHeading } from "../Typography";
 import Button from "../Button";
+import { EMPLOYEE_SALARY_UPDATE } from "../../core/gql-operations/services/update-employee-salary";
 
 const EmployeeDetails = (props) => {
   const salarydata = props?.employeeSalary?.salary;
+  const [employeeSalaryUpdateMutation] = useMutation(EMPLOYEE_SALARY_UPDATE);
+
   const [salaryStructure, setSalaryStructure] = useState({});
 
   useEffect(() => {
     if (salarydata) {
       setSalaryStructure({
         ...salaryStructure,
+        basic: salarydata?.basic,
         da: salarydata?.da,
         pa: salarydata?.pa,
         hra: salarydata?.hra,
@@ -21,11 +27,12 @@ const EmployeeDetails = (props) => {
     } else {
       setSalaryStructure({
         ...salaryStructure,
-        da: "",
-        pa: "",
-        hra: "",
-        pt: "",
-        epf: "",
+        basic: 0,
+        da: 0,
+        pa: 0,
+        hra: 0,
+        pt: 0,
+        epf: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,11 +64,11 @@ const EmployeeDetails = (props) => {
             name="basicPay"
             type="number"
             ariaLabel="Basic Pay"
-            value={salaryStructure?.pa}
+            value={salaryStructure?.basic}
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                pa: e.target.value,
+                basic: parseInt(e.target.value),
               })
             }
           />
@@ -76,7 +83,7 @@ const EmployeeDetails = (props) => {
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                da: e.target.value,
+                da: parseInt(e.target.value),
               })
             }
           />
@@ -91,7 +98,7 @@ const EmployeeDetails = (props) => {
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                pa: e.target.value,
+                pa: parseInt(e.target.value),
               })
             }
           />
@@ -106,7 +113,7 @@ const EmployeeDetails = (props) => {
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                hra: e.target.value,
+                hra: parseInt(e.target.value),
               })
             }
           />
@@ -119,13 +126,13 @@ const EmployeeDetails = (props) => {
             ariaLabel="Professional Tax"
             icon="₹"
             placeholder="$$"
-            name="PT"
+            name="pt"
             type="number"
             value={salaryStructure?.pt}
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                pt: e.target.value,
+                pt: parseInt(e.target.value),
               })
             }
           />
@@ -140,14 +147,27 @@ const EmployeeDetails = (props) => {
             onChange={(e) =>
               setSalaryStructure({
                 ...salaryStructure,
-                epf: e.target.value,
+                epf: parseInt(e.target.value),
               })
             }
           />
         </div>
       </div>
       <div className="flex justify-end items-center">
-        <Button>Save</Button>
+        <Button
+          onClick={() => {
+            employeeSalaryUpdateMutation({
+              variables: {
+                employeeId: props?.employeeSalary?._id,
+                ...salaryStructure,
+              },
+              refetchQueries: ["employeeListRead"],
+            })
+              .then((res) => console.log(res))
+              .catch((error) => console.log(error?.message));
+          }}>
+          Save
+        </Button>
       </div>
     </form>
   );

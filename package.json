@@ -35,9 +35,6 @@
   "lint-staged": {
     "./client/src/**/*.{js,jsx,ts,tsx,json,scss,md}": [
       "eslint --fix"
-    ],
-    "./server/src/**/*.{js,jsx,ts,tsx,json,scss,md}": [
-      "eslint --fix"
     ]
   }
 }
