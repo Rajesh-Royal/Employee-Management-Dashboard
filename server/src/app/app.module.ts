@@ -5,7 +5,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule } from '@nestjs/config';
 import { EmployeeModule } from './employee/employee.module';
 import { SalaryModule } from './salary/salary.module';
-const productionMongoURI = "mongodb+srv://rajesh:rajesh@123@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const productionMongoURI = "mongodb+srv://rajesh:<pwd>@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const localMongoURI = "mongodb://localhost:27017/employeeManagement";
 @Module({
   imports: [
