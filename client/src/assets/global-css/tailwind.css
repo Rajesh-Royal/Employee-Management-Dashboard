@@ -7,10 +7,13 @@
 .salary-table tbody tr:nth-child(odd){
   @apply bg-gray-50;
 }
+.active-row {
+  @apply bg-purple-100 !important;
+}
 /* ripple animation */
 .bid-ripple {
     display: inline-block;
-        position: relative;
+    position: relative;
     width: 64px;
     height: 64px;
   }
