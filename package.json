@@ -17,7 +17,9 @@
     "start:client": "cd client && yarn start:dev",
     "start:server": "cd server && yarn start:dev",
     "start:all": "concurrently \"yarn start:client\" \"yarn start:server\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development yarn install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "dependencies": {
     "concurrently": "^6.2.0"
