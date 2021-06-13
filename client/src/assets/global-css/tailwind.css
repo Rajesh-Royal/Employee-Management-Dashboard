@@ -58,3 +58,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* modal backdrop color */
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+  @apply bg-black !important;
+  @apply bg-opacity-30 !important;
+}
