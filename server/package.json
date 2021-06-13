@@ -1,42 +1,76 @@
 {
-  "name": "employee-management-nestjs-graphql",
-  "version": "1.0.0",
-  "description": "dummy",
-  "main": "index.js",
-  "repository": "https://github.com/Rajesh-Royal/Employee-Management-Dashboard.git",
-  "author": "<rajeshroyal896@gmail.com>",
-  "license": "MIT",
+  "name": "server",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "start": "cd server && yarn start:prod",
-    "install:client": "cd client && yarn install --production=false",
-    "build:client": "cd client && yarn build",
-    "build:server": "cd server && yarn build",
-    "install:server": "cd server && yarn install --production=false",
-    "install:server:client": "concurrently \"yarn install --production=false\" \"yarn install:client\"  \"yarn install:server\"",
-    "start:client": "cd client && yarn start:dev",
-    "start:server": "cd server && yarn start:dev",
-    "start:all": "concurrently \"yarn start:client\" \"yarn start:server\"",
-    "prepare": "husky install"
+    "start": "nest start",
+    "start:prod": "node dist/main",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "concurrently": "^6.2.0"
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/graphql": "^7.10.6",
+    "@nestjs/mongoose": "^7.2.4",
+    "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/schedule": "^0.4.3",
+    "@nestjs/swagger": "^4.8.0",
+    "apollo-server-express": "^2.25.1",
+    "class-validator": "^0.13.1",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.5",
+    "mongoose": "^5.12.13",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.4"
   },
   "devDependencies": {
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0"
+    "@nestjs/cli": "^7.0.0",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.0.0",
+    "@types/express": "^4.17.3",
+    "@types/jest": "25.2.3",
+    "@types/node": "^13.9.1",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "3.0.2",
+    "@typescript-eslint/parser": "3.0.2",
+    "eslint": "7.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "26.0.1",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "26.1.0",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.4"
   },
-  "husky": {
-    "hooks": {
-      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-      "post-applypatch": "echo \"[Husky] post-applypatch\"",
-      "pre-commit": "echo \"[Husky] pre-commit runs\""
-    }
-  },
-  "lint-staged": {
-    "./client/src/**/*.{js,jsx,ts,tsx,json,scss,md}": [
-      "eslint --fix"
-    ]
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }
