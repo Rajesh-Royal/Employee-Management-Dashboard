@@ -1,9 +1,8 @@
-import { EmployeeType } from 'src/app/shared/employee.type';
-export declare class EmployeeSalaryReadQueryModel {
+export declare class EmployeeSalaryModel {
     readonly _id?: string;
-    readonly employee?: EmployeeType;
-    readonly basic?: number;
+    readonly employeeId: string;
     readonly da?: number;
+    readonly basic?: number;
     readonly pa?: number;
     readonly hra?: number;
     readonly pt?: number;
