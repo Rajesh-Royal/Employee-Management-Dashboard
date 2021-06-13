@@ -7,6 +7,7 @@ import Button from "../Button";
 
 const EmployeeSalaryTable = (props) => {
   const { data, loading, startPolling, stopPolling } = useQuery(EMPLOYEE_LIST_READ);
+
   const [employeeSalaryData, setemployeeSalaryData] = useState(undefined);
   const [showSalaryForm, setShowSalaryForm] = useState(false);
   const [activeEmployee, setActiveEmployee] = useState(null);
@@ -66,8 +67,6 @@ const EmployeeSalaryTable = (props) => {
                         setemployeeSalaryData(employee);
                         setShowSalaryForm(true);
                         setActiveEmployee(index);
-                        console.log("index== ", index);
-                        console.log("Active row == ", activeEmployee);
                       }}>
                       Details
                     </Button>
