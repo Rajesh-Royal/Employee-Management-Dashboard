@@ -11,7 +11,9 @@ export class EmployeeCreateMutationService {
   }
 
   public async serve(operation: EmployeeCreateMutationModel): Promise<EmployeeType> {
+    console.log(operation)
     const data = await this.employeeRepositoryService.createEmployee(operation)
+    console.log(data)
     return data;
   }
 }
