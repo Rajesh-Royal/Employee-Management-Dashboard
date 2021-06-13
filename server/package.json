@@ -7,8 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "nest start",
-    "start:prod": "yarn build && node dist/main",
-    "prebuild": "rimraf dist",
+    "start:prod": "node dist/main",
+    "prebuildd": "rimraf dist change this cmd to orignal after heroku deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:dev": "nest start --watch",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
+    "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",
     "@nestjs/graphql": "^7.10.6",
     "@nestjs/mongoose": "^7.2.4",
