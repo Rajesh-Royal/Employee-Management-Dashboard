@@ -9,6 +9,8 @@
   "private": true,
   "scripts": {
     "install:client": "cd client && yarn install --production=false",
+    "build:client": "cd client && yarn build",
+    "build:server": "cd server && yarn build",
     "install:server": "cd server && yarn install --production=false",
     "install:server:client": "concurrently \"yarn install --production=false\" \"yarn install:client\"  \"yarn install:server\"",
     "start:client": "cd client && yarn start:dev",

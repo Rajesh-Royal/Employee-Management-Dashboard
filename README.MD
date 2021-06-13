@@ -20,6 +20,8 @@ This project usages Yarn as package manager and in the project directory, you ca
 | `install:server`         | Install server's npm packages                              |
 | `install:client`         | Install client's npm packages                              |
 | `install:server:client`  | Install server and client's npm packages                   |
+| `build:server`           | build client production                                  |
+| `build:client`           | build server production                                  |
 
 <details>
   <summary># <b>Individual scripts</b></summary>
