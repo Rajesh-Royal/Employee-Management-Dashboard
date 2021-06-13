@@ -16,6 +16,7 @@ export const EMPLOYEE_LIST_READ = gql`
         hra
         pt
         epf
+        basic
       }
     }
   }
