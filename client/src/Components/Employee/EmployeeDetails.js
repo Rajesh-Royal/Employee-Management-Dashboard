@@ -5,9 +5,7 @@ import { SectionHeadingSmall, SectionHeading } from "../Typography";
 import Button from "../Button";
 
 const EmployeeDetails = (props) => {
-  console.log(props);
-  const salarydata = props?.employeeSalary;
-  console.log(props.show);
+  const salarydata = props?.employeeSalary?.salary;
   const [salaryStructure, setSalaryStructure] = useState({});
 
   useEffect(() => {
@@ -41,7 +39,10 @@ const EmployeeDetails = (props) => {
       onClick={(e) => e.preventDefault()}>
       <button
         className="absolute right-2 -mt-12 focus:outline-none"
-        onClick={() => props?.toggleFormVisibility()}>
+        onClick={() => {
+          props?.toggleFormVisibility();
+          props?.currentEmployee();
+        }}>
         <XCircle className="mt-8 w-8 h-8 text-purple-400" aria-hidden="true" />
       </button>
       <SectionHeading>Employee salary structure</SectionHeading>
