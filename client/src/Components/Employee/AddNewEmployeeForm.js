@@ -1,6 +1,7 @@
 import React from "react";
 import { DollarSign, Mail, Map, User, XCircle } from "react-feather";
 import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
 
 import Button from "../Button";
 import FormInputBox from "./FormInputBox";
@@ -96,10 +97,12 @@ const AddNewEmployeeForm = ({
                 refetchQueries: ["employeeListRead"],
               })
                 .then((res) => {
-                  console.log(res);
+                  if (res?.data?.employeeCreate?._id) {
+                    toast.success("New Employee Added");
+                  }
                 })
                 .catch((error) => {
-                  console.log(error?.message);
+                  toast.error(error?.message);
                 });
             }}>
             Save

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { XCircle } from "react-feather";
 import { useMutation } from "@apollo/client";
+import { toast } from "react-toastify";
 
 import FormInputBox from "./FormInputBox";
 import { SectionHeadingSmall, SectionHeading } from "../Typography";
@@ -166,9 +167,15 @@ const EmployeeSalaryDetails = (props) => {
                 ...salaryStructure,
               },
               refetchQueries: ["employeeListRead"],
-            })
-              .then((res) => console.log(res))
-              .catch((error) => console.log(error?.message));
+              // eslint-disable-next-line prettier/prettier
+            }).then((res) => {
+                if (res.data.employeeSalaryUpdate) {
+                  toast.success("Salary Updated successfully");
+                } else {
+                  toast.info("Salary already exist");
+                }
+                // eslint-disable-next-line prettier/prettier
+              }).catch((error) => toast.error(error?.message));
           }}>
           Save
         </Button>

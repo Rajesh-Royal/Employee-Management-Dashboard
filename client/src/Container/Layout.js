@@ -6,12 +6,14 @@ import ThemedSuspense from "../Components/ThemedSuspense";
 import Container from "./Container";
 import Routes from "../Routes/Routes";
 import Header from "../Components/Header";
+import ToastMessageContainer from "../Components/ToastContainer";
 
 const Page404 = lazy(() => import("../Pages/404"));
 
 function Layout() {
   return (
     <React.Fragment>
+      <ToastMessageContainer />
       <Header />
       <Container>
         <GlobalErrorBoundary>

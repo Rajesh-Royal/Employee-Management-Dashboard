@@ -14,7 +14,7 @@ const schedule_1 = require("@nestjs/schedule");
 const config_1 = require("@nestjs/config");
 const employee_module_1 = require("./employee/employee.module");
 const salary_module_1 = require("./salary/salary.module");
-const productionMongoURI = "mongodb+srv://rajesh:rajesh@123@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const productionMongoURI = "mongodb+srv://rajesh:<pwd>@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const localMongoURI = "mongodb://localhost:27017/employeeManagement";
 let AppModule = class AppModule {
 };
@@ -26,7 +26,7 @@ AppModule = __decorate([
                 playground: true,
             }),
             config_1.ConfigModule.forRoot({ envFilePath: `${process.env.NODE_ENV}.env` }),
-            mongoose_1.MongooseModule.forRoot(productionMongoURI, {
+            mongoose_1.MongooseModule.forRoot(localMongoURI, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
                 useFindAndModify: false,

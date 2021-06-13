@@ -14,7 +14,7 @@ const localMongoURI = "mongodb://localhost:27017/employeeManagement";
       playground: true,
     }),
     ConfigModule.forRoot({ envFilePath: `${process.env.NODE_ENV}.env` }),
-    MongooseModule.forRoot(productionMongoURI , {
+    MongooseModule.forRoot(localMongoURI , {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
