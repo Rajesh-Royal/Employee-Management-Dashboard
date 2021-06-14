@@ -86,7 +86,6 @@ A quick look at the top-level files and directories you'll see in this project.
           ├── app.module.ts
         ├── main.ts
     ├── nest-cli.json
-    ├── netlify.toml
     ├── .eslintrc.json
     ├── .gitignore
     ├── .prettierrc
