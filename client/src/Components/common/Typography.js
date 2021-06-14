@@ -1,7 +1,11 @@
 import React from "react";
 
 export const SectionHeading = ({ children, className = "" }) => {
-  return <h2 className={`text-lg font-medium text-gray-500 ${className}`}>{children}</h2>;
+  return (
+    <h2 className={`text-lg font-medium text-gray-500 dark:text-gray-200 ${className}`}>
+      {children}
+    </h2>
+  );
 };
 
 export const SectionHeadingSmall = ({ children, className }) => {

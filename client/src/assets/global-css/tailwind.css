@@ -6,9 +6,11 @@
 /* odd child style */
 .salary-table tbody tr:nth-child(odd){
   @apply bg-gray-50;
+  @apply dark:bg-gray-400;
 }
 .active-row {
   @apply bg-purple-100 !important;
+  @apply dark:bg-gray-700 !important;
 }
 /* ripple animation */
 .bid-ripple {

@@ -21,8 +21,8 @@ const EmployeeSalaryListTable = ({
   return (
     <div className="flex flex-col overflow-x-scroll xl:overflow-x-hidden my-3">
       <table className="salary-table shadow overflow-hidden sm:rounded-lg divide-y divide-gray-200">
-        <thead className="bg-gray-200">
-          <tr className="text-left text-xs font-base text-gray-500 uppercase tracking-wider">
+        <thead className="bg-gray-200 dark:bg-gray-600">
+          <tr className="text-left text-xs font-base text-gray-500 dark:text-gray-200 uppercase tracking-wider">
             {tableHeadings.map((heading) => {
               return (
                 <th scope="col" className="px-6 py-3" key={heading}>
@@ -32,12 +32,12 @@ const EmployeeSalaryListTable = ({
             })}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200 dark:divide-gray-400">
           {!loading && data ? (
             currentEmployees.map((employee, index) => {
               return (
                 <tr
-                  className={`bg-gray-100 text-sm text-gray-500 ${
+                  className={`bg-gray-100 text-sm text-gray-500 dark:text-gray-200 dark:bg-gray-500 ${
                     index === activeEmployee ? "active-row" : ""
                   }`}
                   key={employee?._id}>

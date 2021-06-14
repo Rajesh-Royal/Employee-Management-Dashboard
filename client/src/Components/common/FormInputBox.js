@@ -12,7 +12,7 @@ const FormInputBox = ({
 }) => {
   return (
     <div className="flex flex-col text-gray-500 mt-8">
-      <label htmlFor="basic-pay" className="">
+      <label htmlFor="basic-pay" className="dark:text-gray-200">
         {label}
       </label>
       <div className="border max-w-xs w-full flex justify-between items-stretch mt-1">

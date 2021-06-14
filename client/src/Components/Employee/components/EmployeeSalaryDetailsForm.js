@@ -69,7 +69,7 @@ const EmployeeSalaryDetailsForm = (props) => {
 
   return (
     <form
-      className={`shadow-md border border-gray-100 p-6 bg-gray-50 m-1 mb-8 relative ${
+      className={`shadow-md border border-gray-100 p-6 bg-gray-50 dark:bg-gray-600 dark:border-gray-600 m-1 mb-8 relative ${
         !props.show ? "hidden" : null
       }`}
       onClick={(e) => e.preventDefault()}>
@@ -82,7 +82,7 @@ const EmployeeSalaryDetailsForm = (props) => {
         <XCircle className={`mt-8 w-8 h-8 ${projectTheme.closeXButtonColor}`} aria-hidden="true" />
       </button>
       <SectionHeading>Employee salary structure</SectionHeading>
-      <div className="flex justify-start flex-wrap md:space-x-24">
+      <div className="flex justify-start flex-wrap md:space-x-24 mt-5">
         {/* Employee salary section */}
         <div className="salary w-full md:w-1/3">
           <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
@@ -131,7 +131,9 @@ const EmployeeSalaryDetailsForm = (props) => {
         </div>
         {/* employee Deduction Section */}
         <div className="deduction w-full md:w-1/3 mt-8 md:mt-0">
-          <SectionHeadingSmall className="text-purple-500 border-b">Deductions</SectionHeadingSmall>
+          <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
+            Deductions
+          </SectionHeadingSmall>
           <FormInputBox
             label="Professional Tax"
             ariaLabel="Professional Tax"
@@ -155,7 +157,7 @@ const EmployeeSalaryDetailsForm = (props) => {
         </div>
       </div>
       <div className="flex justify-between items-center mt-3">
-        <p>
+        <p className="dark:text-gray-200">
           Total salary:{" "}
           <strong className={`${salaryMaxError ? "text-red-700" : projectTheme.textColor}`}>
             {netCalculatedSalary}

@@ -6,7 +6,7 @@ const Button = ({ children, className = "", disabled, ...buttonProps }) => {
     <button
       className={`py-2.5 px-5 rounded-md text-white font-medium focus:outline-none transition-all duration-75 ${className} ${
         disabled
-          ? "bg-gray-200 cursor-not-allowed"
+          ? "bg-gray-200 cursor-not-allowed dark:text-gray-300"
           : `${projectTheme.background} hover:${projectTheme.background}`
       }`}
       {...buttonProps}

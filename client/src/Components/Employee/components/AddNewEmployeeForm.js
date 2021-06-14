@@ -20,7 +20,7 @@ const AddNewEmployeeForm = ({
   return (
     <form
       onClick={(e) => e.preventDefault()}
-      className="shadow-md border border-gray-100 p-6 bg-gray-50 max-w-3xl relative">
+      className="shadow-md border border-gray-100 p-6 bg-gray-50 dark:bg-gray-600 dark:border-gray-600 max-w-3xl relative">
       <button
         className="absolute right-2 -mt-12 focus:outline-none"
         onClick={() => {
