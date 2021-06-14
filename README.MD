@@ -6,6 +6,11 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 
 </div>
 
+<div align="center">
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a97f81a3-b54b-4933-aa7e-f11805328312/deploy-status)](https://app.netlify.com/sites/employee-management-nest-react/deploys)
+
+</div>
 > *project color theme can be changed from `src/data/projectTheme.js`*
 
 ## <p>Available Scripts :helicopter:</p>
