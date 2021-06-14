@@ -23,7 +23,6 @@ This project usages Yarn as package manager and in the project directory, you ca
 | `build:server`           | build client production                                  |
 | `build:client`           | build server production                                  |
 | `prepare`                | Install husky hooks after package Installs               |
-| `prepare`                | Install husky hooks after package Installs               |
 
 >You can Ignore some of the weired looking commands they are related to heroku or netlify, but If you have experience with these platform and CI/CD pipeline go ahead 👍
 
