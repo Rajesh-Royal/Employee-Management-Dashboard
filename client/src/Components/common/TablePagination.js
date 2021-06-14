@@ -1,6 +1,6 @@
 import React from "react";
 
-const EmployeeTablePagination = ({ employeesPerPage, totalEmployees, paginate, currentPage }) => {
+const TablePagination = ({ employeesPerPage, totalEmployees, paginate, currentPage }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalEmployees / employeesPerPage); i++) {
@@ -26,4 +26,4 @@ const EmployeeTablePagination = ({ employeesPerPage, totalEmployees, paginate, c
   );
 };
 
-export default EmployeeTablePagination;
+export default TablePagination;

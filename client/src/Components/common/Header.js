@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "../Container/Container";
+import Container from "../../Container/Container";
 import { GitHub } from "react-feather";
-import { projectData } from "../Data/data";
+import { projectData } from "../../Data/data";
 
 const Header = () => {
   return (

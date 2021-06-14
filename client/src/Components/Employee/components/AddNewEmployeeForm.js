@@ -3,10 +3,11 @@ import { DollarSign, Mail, Map, User, XCircle } from "react-feather";
 import { useMutation } from "@apollo/client";
 import { toast } from "react-toastify";
 
-import Button from "../Button";
-import FormInputBox from "./FormInputBox";
-import { SectionHeading } from "../Typography";
-import { ADD_NEW_EMPLOYEE } from "../../core/gql-operations/mutation/add-new-employee.mutation";
+import Button from "../../common/Button";
+import FormInputBox from "../../common/FormInputBox";
+import { SectionHeading } from "../../common/Typography";
+import { ADD_NEW_EMPLOYEE } from "../../../core/gql-operations/mutation/add-new-employee.mutation";
+import { validateEmail } from "../../../utility/UtilityFunctions";
 
 const AddNewEmployeeForm = ({
   employeeProfileData,
@@ -57,7 +58,7 @@ const AddNewEmployeeForm = ({
           icon={<Mail />}
           placeholder="Email Address"
           name="email"
-          type="text"
+          type="email"
           ariaLabel="Employee Email Address"
           value={employeeProfileData?.email}
           onChange={(e) => {
@@ -92,6 +93,14 @@ const AddNewEmployeeForm = ({
           <Button
             className=" w-full"
             onClick={() => {
+              if (!validateEmail(employeeProfileData?.email)) {
+                toast.error("Email not valid");
+                return 0;
+              }
+              if (employeeProfileData?.ctc === "") {
+                toast.error("CTC cannot be null");
+                return 0;
+              }
               addNewEmployee({
                 variables: employeeProfileData,
                 refetchQueries: ["employeeListRead"],

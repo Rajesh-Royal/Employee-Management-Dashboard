@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Helmet } from "react-helmet-async";
-import EmployeeSalaryTable from "../Components/Employee/EmployeeSalaryTable";
+import Employee from "../Components/Employee/Employee";
+import AddNewEmployee from "../Components/Employee/components/AddNewEmployee";
 
 const Home = () => {
   return (
@@ -9,7 +10,8 @@ const Home = () => {
       <Helmet>
         <title>Home - Dashboard</title>
       </Helmet>
-      <EmployeeSalaryTable />
+      <AddNewEmployee />
+      <Employee />
     </React.Fragment>
   );
 };

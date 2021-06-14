@@ -1,12 +1,12 @@
 import React, { lazy, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import GlobalErrorBoundary from "../Components/GlobalErrorBoundary";
-import ThemedSuspense from "../Components/ThemedSuspense";
+import GlobalErrorBoundary from "../Components/global/GlobalErrorBoundary";
+import ThemedSuspense from "../Components/global/ThemedSuspense";
 import Container from "./Container";
 import Routes from "../Routes/Routes";
-import Header from "../Components/Header";
-import ToastMessageContainer from "../Components/ToastContainer";
+import Header from "../Components/common/Header";
+import ToastMessageContainer from "../Components/global/ToastContainer";
 
 const Page404 = lazy(() => import("../Pages/404"));
 

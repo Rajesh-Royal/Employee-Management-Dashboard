@@ -3,13 +3,13 @@ import { XCircle } from "react-feather";
 import { useMutation } from "@apollo/client";
 import { toast } from "react-toastify";
 
-import FormInputBox from "./FormInputBox";
-import { SectionHeadingSmall, SectionHeading } from "../Typography";
-import Button from "../Button";
-import { EMPLOYEE_SALARY_UPDATE } from "../../core/gql-operations/mutation/update-employee-salary.mutation";
-import { reduceSingleLevelObject } from "../../utility/UtilityFunctions";
+import FormInputBox from "../../common/FormInputBox";
+import { SectionHeadingSmall, SectionHeading } from "../../common/Typography";
+import Button from "../../common/Button";
+import { EMPLOYEE_SALARY_UPDATE } from "../../../core/gql-operations/mutation/update-employee-salary.mutation";
+import { reduceSingleLevelObject } from "../../../utility/UtilityFunctions";
 
-const EmployeeSalaryDetails = (props) => {
+const EmployeeSalaryDetailsForm = (props) => {
   const salarydata = props?.employeeSalary?.salary;
   const salaryPerMonth = parseInt(props?.employeeSalary?.ctc / 12);
 
@@ -184,4 +184,4 @@ const EmployeeSalaryDetails = (props) => {
   );
 };
 
-export default EmployeeSalaryDetails;
+export default EmployeeSalaryDetailsForm;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-import { SectionHeading } from "../Typography";
-import Button from "../Button";
-import { modalStyle } from "../../utility/ModalStyle";
+import { SectionHeading } from "../../common/Typography";
+import Button from "../../common/Button";
+import { modalStyle } from "../../../utility/ModalStyle";
 import AddNewEmployeeForm from "./AddNewEmployeeForm";
 
 const AddNewEmployee = () => {
@@ -20,7 +20,7 @@ const AddNewEmployee = () => {
   const onProfileDataChange = (e) => {
     setEmployeeProfileData({
       ...employeeProfileData,
-      [e.target.name]: e.target.name === "ctc" ? parseInt(e.target.value) : e.target.value,
+      [e.target.name]: e.target.name === "ctc" ? parseInt(e.target.value) || "" : e.target.value,
     });
   };
   // closeModal
