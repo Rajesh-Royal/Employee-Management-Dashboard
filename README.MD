@@ -6,7 +6,7 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 
 </div>
 
-> project color theme can be changed from `src/data/projectTheme.js`
+> *project color theme can be changed from `src/data/projectTheme.js`*
 
 ## <p>Available Scripts :helicopter:</p>
 
