@@ -74,6 +74,16 @@ A quick look at the top-level files and directories you'll see in this project.
 </details>
 1. **`.vscode/`**: This directory contains all of the workspace setting for vscode.
 
+## Deploy on cloud
+
+> <b>Server</b> graphql Server is deployed at heroku.
+> <b>Client</b> is deployed on netlify.
+> <b>Database</b> is at mongodb atlas.
+
+<details>
+  <summary>How to deploy</summary>
+  </details>
+
 ### Notes
 
 - if husky hooks not working it can be because of husky didn't created hooks in `.husky` directory. To fix this run the following commands in root of this project.
