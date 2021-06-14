@@ -1,4 +1,5 @@
 import React from "react";
+import { projectTheme } from "../../Data/projectTheme";
 
 const TablePagination = ({ employeesPerPage, totalEmployees, paginate, currentPage }) => {
   const pageNumbers = [];
@@ -15,7 +16,7 @@ const TablePagination = ({ employeesPerPage, totalEmployees, paginate, currentPa
             <button
               onClick={() => paginate(number)}
               className={`${
-                currentPage === number ? "bg-purple-500 text-gray-50" : null
+                currentPage === number ? `${projectTheme.background} text-gray-50` : null
               } px-4 rounded-md focus:outline-none`}>
               {number}
             </button>

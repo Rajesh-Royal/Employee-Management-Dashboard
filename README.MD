@@ -6,6 +6,8 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 
 </div>
 
+> project color theme can be changed from `src/data/projectTheme.js`
+
 ## <p>Available Scripts :helicopter:</p>
 
 This project usages Yarn as package manager and in the project directory, you can run:

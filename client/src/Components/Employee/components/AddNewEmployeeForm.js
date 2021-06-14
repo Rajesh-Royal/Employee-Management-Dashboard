@@ -8,6 +8,7 @@ import FormInputBox from "../../common/FormInputBox";
 import { SectionHeading } from "../../common/Typography";
 import { ADD_NEW_EMPLOYEE } from "../../../core/gql-operations/mutation/add-new-employee.mutation";
 import { validateEmail } from "../../../utility/UtilityFunctions";
+import { projectTheme } from "../../../Data/projectTheme";
 
 const AddNewEmployeeForm = ({
   employeeProfileData,
@@ -25,7 +26,7 @@ const AddNewEmployeeForm = ({
         onClick={() => {
           closeAddEmployeeModal();
         }}>
-        <XCircle className="mt-8 w-8 h-8 text-purple-400" aria-hidden="true" />
+        <XCircle className={`mt-8 w-8 h-8 ${projectTheme.closeXButtonColor}`} aria-hidden="true" />
       </button>
       <SectionHeading>Add a New Employee</SectionHeading>
       <div className="grid grid-cols-1 gap-x-5 sm:grid-cols-2">

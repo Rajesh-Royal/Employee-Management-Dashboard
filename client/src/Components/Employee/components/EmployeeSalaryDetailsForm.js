@@ -8,6 +8,7 @@ import { SectionHeadingSmall, SectionHeading } from "../../common/Typography";
 import Button from "../../common/Button";
 import { EMPLOYEE_SALARY_UPDATE } from "../../../core/gql-operations/mutation/update-employee-salary.mutation";
 import { reduceSingleLevelObject } from "../../../utility/UtilityFunctions";
+import { projectTheme } from "../../../Data/projectTheme";
 
 const EmployeeSalaryDetailsForm = (props) => {
   const salarydata = props?.employeeSalary?.salary;
@@ -78,13 +79,15 @@ const EmployeeSalaryDetailsForm = (props) => {
           props?.toggleFormVisibility();
           props?.currentEmployee();
         }}>
-        <XCircle className="mt-8 w-8 h-8 text-purple-400" aria-hidden="true" />
+        <XCircle className={`mt-8 w-8 h-8 ${projectTheme.closeXButtonColor}`} aria-hidden="true" />
       </button>
       <SectionHeading>Employee salary structure</SectionHeading>
       <div className="flex justify-start flex-wrap md:space-x-24">
         {/* Employee salary section */}
         <div className="salary w-full md:w-1/3">
-          <SectionHeadingSmall className="text-purple-500 border-b">Salary</SectionHeadingSmall>
+          <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
+            Salary
+          </SectionHeadingSmall>
           <FormInputBox
             label="Basic Pay"
             icon="₹"
@@ -154,7 +157,7 @@ const EmployeeSalaryDetailsForm = (props) => {
       <div className="flex justify-between items-center mt-3">
         <p>
           Total salary:{" "}
-          <strong className={`${salaryMaxError ? "text-red-700" : "text-purple-500"}`}>
+          <strong className={`${salaryMaxError ? "text-red-700" : projectTheme.textColor}`}>
             {netCalculatedSalary}
           </strong>
         </p>

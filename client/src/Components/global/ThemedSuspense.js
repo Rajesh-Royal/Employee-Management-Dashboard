@@ -1,4 +1,5 @@
 import React from "react";
+import { projectTheme } from "../../Data/projectTheme";
 
 function ThemedSuspense({ className = "" }) {
   return (
@@ -6,8 +7,8 @@ function ThemedSuspense({ className = "" }) {
       className={`flex justify-center p-6 overflow-hidden ${className}`}
       style={{ height: "90vh" }}>
       <div className="bid-ripple flex self-center">
-        <div />
-        <div />
+        <div className={projectTheme.borderColor} />
+        <div className={projectTheme.borderColor} />
       </div>
     </div>
   );
