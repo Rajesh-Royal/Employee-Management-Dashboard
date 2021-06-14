@@ -1,4 +1,4 @@
-const colorsArray = ["indigo", "purple", "blue", "green"];
+const colorsArray = ["purple", "blue", "green"];
 const color = colorsArray[Math.floor(Math.random() * colorsArray.length)];
 export const projectTheme = {
   background: `bg-${color}-500` || "bg-purple-500",
