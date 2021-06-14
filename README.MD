@@ -80,16 +80,16 @@ A quick look at the top-level files and directories you'll see in this project.
 > <b>Client</b> is deployed on netlify.
 > <b>Database</b> is at mongodb atlas.
 
-<details>
-  <summary>How to deploy</summary>
-- Deploy MongoDB
+> <b>How to deploy</b>
+
+- <b>Deploy MongoDB</b>
   - Create a new cluster at [MongoDB Cluster](https://bit.ly/3zrWsfN)
   - Go to cluster click on connect and follow the steps.
   - Create a user of this collection and remember username and pwd.
   - You should allow IP access from everywhere.
   - Choose connect your application and copy URI and use It in server deployment step.
   - Change URI values with your pwd and username.
-- To deploy Server.
+- <b>Deploy Server.</b>
   - create a new app on [heroku](https://dashboard.heroku.com/new-app).
   - Install heroku CLI locally.
   - Open cmd at root of the project.
@@ -99,7 +99,8 @@ A quick look at the top-level files and directories you'll see in this project.
   - Now push to heroku master `git push heroku <branch_name>:master`
   - Your server is running at the `APP_URL/graphql`
   - Copy app url It will be needed in client deployment.
-- Upload or Clone this repository to github
+- <b>Deploy Client</b>
+  - Upload or Clone this repository to github
   - Open `client/src/index.js`
   - Change ApolloClient to `projectData.graphqlServerLive`
   - Go to `projectData` file and replace the value of `graphqlServerLive` with your live GraphQL server URI which you have copied in server deployment.
@@ -108,8 +109,8 @@ A quick look at the top-level files and directories you'll see in this project.
   - You can deploy any branch I will prefer deploying master as It have production ready code.
   - leave the netlify variables empty don't put anything.
   - This project already have a netlify config file, netlify will use this file.
+
 > Happy deploying 😄
-</details>
 
 ### Notes
 
