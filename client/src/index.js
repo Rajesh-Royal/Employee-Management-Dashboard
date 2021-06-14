@@ -7,7 +7,7 @@ import App from "./App";
 import { projectData } from "./Data/data";
 
 const client = new ApolloClient({
-  uri: projectData.graphqlServerLocal,
+  uri: projectData.graphqlServerLive,
   cache: new InMemoryCache(),
 });
 
