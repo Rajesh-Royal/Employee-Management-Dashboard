@@ -72,7 +72,34 @@ A quick look at the top-level files and directories you'll see in this project.
     ├── tailwind.config.js
     └── yarn.lock
 </details>
-1. **`.vscode/`**: This directory contains all of the workspace setting for vscode.
+<details>
+  <summary>server</summary>
+
+    ├── .vscode
+    ├── node_modules
+    ├── dist
+    ├── src
+        ├── app
+          ├── employee
+          ├── salary
+          ├── shared
+          ├── app.module.ts
+        ├── main.ts
+    ├── nest-cli.json
+    ├── netlify.toml
+    ├── .eslintrc.json
+    ├── .gitignore
+    ├── .prettierrc
+    ├── package.json
+    ├── README.md
+    ├── schema.gql
+    ├── tsconfig.build.json
+    ├── tsconfig.json
+    └── yarn.lock
+</details>
+
+> `.vscode/`: This directory contains all of the workspace setting for vscode.
+> `.husky/`:  All the husky configuration.
 
 ## Deploy on cloud
 
