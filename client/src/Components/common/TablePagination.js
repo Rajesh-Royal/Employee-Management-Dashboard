@@ -17,7 +17,7 @@ const TablePagination = ({ employeesPerPage, totalEmployees, paginate, currentPa
               onClick={() => paginate(number)}
               className={`${
                 currentPage === number ? `${projectTheme.background} text-gray-50` : null
-              } px-4 rounded-md focus:outline-none`}>
+              } px-4 rounded-md focus:outline-none dark:text-gray-50`}>
               {number}
             </button>
           </li>
