@@ -65,7 +65,7 @@ const EmployeeSalaryDetailsForm = (props) => {
 
   useEffect(() => {
     netCalculatedSalary > salaryPerMonth ? setSalaryMaxError(true) : setSalaryMaxError(false);
-  }, [netCalculatedSalary]);
+  }, [netCalculatedSalary, salaryPerMonth]);
 
   return (
     <form

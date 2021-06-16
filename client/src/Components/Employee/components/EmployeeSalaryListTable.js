@@ -17,7 +17,6 @@ const EmployeeSalaryListTable = ({
     "Salary/Month",
     "Action",
   ];
-  console.log(loading);
   return (
     <div className="flex flex-col overflow-x-scroll xl:overflow-x-hidden my-3">
       <table className="salary-table shadow overflow-hidden sm:rounded-lg divide-y divide-gray-200">

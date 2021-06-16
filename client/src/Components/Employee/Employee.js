@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useQuery } from "@apollo/client";
 
 import { EMPLOYEE_LIST_READ } from "../../core/gql-operations/query/employee-list-read-query";
@@ -42,9 +42,13 @@ const Employee = (props) => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const toggleFormVisibility = () => {
+  // toggle the visibility of the user salary edit form
+  const toggleFormVisibility = useCallback(() => {
     setShowSalaryForm(!showSalaryForm);
-  };
+  }, [showSalaryForm]);
+  // const toggleFormVisibility = () => {
+  //   setShowSalaryForm(!showSalaryForm);
+  // };
   // change salarytable form data
   const changeEmployeeSalaryDetails = (employee, index) => {
     setemployeeSalaryData(employee);
@@ -70,13 +74,15 @@ const Employee = (props) => {
         paginate={paginate}
         currentPage={currentPage}
       />
-      <EmployeeSalaryDetailsForm
-        employeeSalary={employeeSalaryData}
-        {...props}
-        show={showSalaryForm}
-        toggleFormVisibility={toggleFormVisibility}
-        currentEmployee={currentEmployee}
-      />
+      {showSalaryForm ? (
+        <EmployeeSalaryDetailsForm
+          employeeSalary={employeeSalaryData}
+          {...props}
+          show={showSalaryForm}
+          toggleFormVisibility={toggleFormVisibility}
+          currentEmployee={currentEmployee}
+        />
+      ) : null}
     </React.Fragment>
   );
 };
