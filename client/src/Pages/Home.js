@@ -1,7 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import EmployeeSalaryStructure from "../Components/employee-salary-structure/EmployeeSalaryStructure";
-import AddNewEmployee from "../Components/Employee/components/AddNewEmployee";
+import EmployeeOperations from "../Components/employee-operations/EmployeeOperations";
 import Employee from "../Components/Employee/Employee";
 
 const Home = () => {
@@ -10,8 +9,7 @@ const Home = () => {
       <Helmet>
         <title>Home - Dashboard</title>
       </Helmet>
-      <AddNewEmployee />
-      <EmployeeSalaryStructure />
+      <EmployeeOperations />
       <Employee />
     </React.Fragment>
   );
