@@ -34,6 +34,7 @@
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.5",
     "mongoose": "^5.12.13",
+    "mongoose-unique-validator": "^2.0.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4"
