@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-
-import { SectionHeading } from "../../common/Typography";
-import Button from "../../common/Button";
 import { modalStyle } from "../../../utility/ModalStyle";
+import Button from "../../common/Button";
 import AddNewEmployeeForm from "./AddNewEmployeeForm";
 
 const AddNewEmployee = () => {
@@ -28,7 +26,6 @@ const AddNewEmployee = () => {
   return (
     <React.Fragment>
       <div className="flex justify-between items-center my-4">
-        <SectionHeading className="text-xl">Employee Salaries</SectionHeading>
         <Button
           onClick={() => {
             setModalIsOpen(true);
