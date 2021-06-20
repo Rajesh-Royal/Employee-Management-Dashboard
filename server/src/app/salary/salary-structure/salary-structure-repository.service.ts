@@ -19,4 +19,7 @@ export class SalaryStructureRepositoryService {
             ...(operation.disabled !== undefined && { disabled: operation.disabled }),
         }).save();
     }
+    public readSalaryMetaFields(): Promise<SalaryStructureType[]> {
+        return this.SalaryStructureModel.find({}).exec();
+    }
 }
