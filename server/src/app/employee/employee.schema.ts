@@ -10,4 +10,4 @@ export const EmployeeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SalaryType'
     }
-});
+}, {timestamps: true});

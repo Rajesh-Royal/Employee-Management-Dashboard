@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type EmployeeSalaryCreateMutationModel {
+  _id: ID
+  employeeId: String!
+  value: Float!
+  meta_key: String!
+  meta_field_id: String!
+}
+
 type EmployeeCreateMutationModel {
   _id: ID
   firstName: String!
@@ -11,6 +19,32 @@ type EmployeeCreateMutationModel {
   ctc: Float!
   salary: ID
 }
+
+type SalaryStructureModel {
+  _id: ID
+  salary_meta_key: String!
+  type: SalaryStructureMetaKeyTypeEnum!
+  disabled: Boolean!
+}
+
+enum SalaryStructureMetaKeyTypeEnum {
+  Number
+}
+
+type ReadEmployeeSalaryDto {
+  _id: ID
+  employeeId: EmployeeCreateMutationModel!
+  value: Float!
+  meta_key: String!
+  meta_field_id: SalaryStructureModel!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type EmployeeSalaryReadQueryModel {
   _id: ID
@@ -40,18 +74,17 @@ type CreateSalaryMetaKeyMutationModel {
   disabled: Boolean!
 }
 
-enum SalaryStructureMetaKeyTypeEnum {
-  Number
-}
-
 type Query {
   employeeListRead: [EmployeeReadQueryModel!]!
   employeeRead(employeeId: ID): EmployeeReadQueryModel!
   employeeSalaryRead(employeeId: String!): EmployeeSalaryReadQueryModel!
+  getEmployeeSalaryStructureMetaFields: [CreateSalaryMetaKeyMutationModel!]!
+  employeeMetaSalaryRead(employeeId: ID!): [ReadEmployeeSalaryDto!]!
 }
 
 type Mutation {
   employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
-  CreateEmployeeSalaryStructureMetaField(salary_meta_key: String!, type: SalaryStructureMetaKeyTypeEnum!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
+  CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, type: SalaryStructureMetaKeyTypeEnum!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
+  employeeMetaSalaryCreate(_id: ID, employeeId: String!, value: Float!, meta_key: String!, meta_field_id: String!): EmployeeSalaryCreateMutationModel!
 }

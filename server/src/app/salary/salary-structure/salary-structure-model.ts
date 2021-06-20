@@ -1,4 +1,4 @@
-import { ArgsType, Field, ObjectType, registerEnumType } from "@nestjs/graphql";
+import { ArgsType, Field, ID, ObjectType, registerEnumType } from "@nestjs/graphql";
 import { SalaryStructureMetaKeyTypeEnum } from "src/app/shared/salary-structure-meta-key-type.enum";
 import { SalaryStructureType } from "src/app/shared/salary-structure.type";
 
@@ -9,6 +9,11 @@ registerEnumType(SalaryStructureMetaKeyTypeEnum, {
 @ArgsType()
 @ObjectType()
 export class SalaryStructureModel {
+    @Field(() => ID, {
+        nullable: true
+    })
+    public readonly _id?: string = undefined;
+
     @Field(() => String)
     public readonly salary_meta_key: string = undefined;
 
