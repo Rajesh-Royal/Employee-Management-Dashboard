@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
+import { AuthModule } from './auth/auth.module';
 import { EmployeeSalariesModule } from './employee-salaries/employee-salaries.module';
 import { EmployeeModule } from './employee/employee.module';
 import { SalaryModule } from './salary/salary.module';
@@ -24,7 +25,8 @@ const localMongoURI = "mongodb://localhost:27017/employeeManagement";
     ScheduleModule.forRoot(),
     EmployeeModule,
     SalaryModule,
-    EmployeeSalariesModule
+    EmployeeSalariesModule,
+    AuthModule
   ],
 
 })
