@@ -10,9 +10,7 @@ export class SalaryStructureResolver {
     constructor(
         private readonly createSalaryMetaKeyMutationService: CreateSalaryMetaKeyMutationService,
         private readonly readSalaryMetaKeyQueryService: ReadSalaryMetaKeysQueryService,
-    ){
-
-    }
+    ){}
 
     @Mutation(() => CreateSalaryMetaKeyMutationModel)
     public  async CreateEmployeeSalaryStructureMetaField(@Args() _arguments: SalaryStructureModel): Promise<SalaryStructureType> {

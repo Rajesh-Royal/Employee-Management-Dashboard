@@ -15,6 +15,7 @@ export class SalaryStructureRepositoryService {
     public createSalaryField(operation: SalaryStructureModel): Promise<SalaryStructureType> {
         return new this.SalaryStructureModel({
             ...(operation.salary_meta_key !== undefined && { salary_meta_key: operation.salary_meta_key }),
+            ...(operation.field_name !== undefined && { field_name: operation.field_name }),
             ...(operation.type !== undefined && { type: operation.type }),
             ...(operation.disabled !== undefined && { disabled: operation.disabled }),
         }).save();

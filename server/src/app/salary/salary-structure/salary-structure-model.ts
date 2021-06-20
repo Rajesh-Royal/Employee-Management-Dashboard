@@ -17,6 +17,9 @@ export class SalaryStructureModel {
     @Field(() => String)
     public readonly salary_meta_key: string = undefined;
 
+    @Field(() => String)
+    public readonly field_name: string = undefined;
+
     @Field(() => SalaryStructureMetaKeyTypeEnum)
     public readonly type: string = undefined;
 
@@ -24,8 +27,10 @@ export class SalaryStructureModel {
     public readonly disabled: boolean = undefined;
 
     constructor(initialValues?: SalaryStructureType | any){
+        this._id = initialValues?.id;
         this.salary_meta_key = initialValues?.salary_meta_key;
         this.type = initialValues?.type;
         this.disabled = initialValues?.disabled;
+        this.field_name = initialValues?.field_name;
     }
 }
