@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const employee_module_1 = require("../employee/employee.module");
 const salary_repository_service_1 = require("./salary-repository.service");
+const salary_structure_module_1 = require("./salary-structure/salary-structure.module");
 const salary_resolver_1 = require("./salary.resolver");
 const salary_schema_1 = require("./salary.schema");
 const salary_read_query_service_1 = require("./service/salary-read.query.service");
@@ -27,7 +28,8 @@ SalaryModule = __decorate([
                     collection: "salary"
                 },
             ]),
-            common_1.forwardRef(() => employee_module_1.EmployeeModule)
+            common_1.forwardRef(() => employee_module_1.EmployeeModule),
+            common_1.forwardRef(() => salary_structure_module_1.SalaryStructureModule)
         ],
         providers: [
             salary_resolver_1.SalaryResolvers,

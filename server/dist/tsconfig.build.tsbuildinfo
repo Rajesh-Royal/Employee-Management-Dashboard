@@ -4935,6 +4935,51 @@
         "signature": "b8fa2e3659261f4e9f433b5864719685a492f0ac98e71f74a372f28b7c973453",
         "affectsGlobalScope": false
       },
+      "../src/app/shared/salary-structure.type.ts": {
+        "version": "bf9135f8b69d2970c9e0676a12d6a27a7ebdd5172ef5144983b062ec40ec6994",
+        "signature": "4953c6346dadfefdd9b7d73cc1f955782e89c369f19ea13165989217a20a9e8e",
+        "affectsGlobalScope": false
+      },
+      "../src/app/shared/salary-structure-meta-key-type.enum.ts": {
+        "version": "1dd9a19fe2057baafe85123d33a0d6e27bd15d8877fc2c2ed98b42c0c054d101",
+        "signature": "6d4dd3fb85f481ddc6f70835465ec45a93d12fa4eac11996e63b9f2f33f1fbc5",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/salary-structure-model.ts": {
+        "version": "9457d1d74b4a7a3d0636b15cba7452c7c7b9ff1a19f2fb87eb689f6f7e782233",
+        "signature": "1869e498cfc28228768a7391e1e81a7884444511cf83b2b7e7d3109e629f7309",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/salary-structure-repository.service.ts": {
+        "version": "0b8f70fd8e9743d0b35b5c0c47408fb300a362b2582424b884fed878bc453ce7",
+        "signature": "7f9d86b8492733a187cbcae1edeef043aa1234d50c97fb492367c29c1f96ed0a",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts": {
+        "version": "76eaab1e5635dedaac3ec2f3067d4db06899985496c06cc9286c31c847955eae",
+        "signature": "fa7e8f49691155a46014b8e3aaca2a15f124002392bb8bdbf804232c34d7f29e",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts": {
+        "version": "925de0b1bf8c1bc598c94a0985c1cff2a4d2a454f416f649ffa0e100968ad3d5",
+        "signature": "45e3ac32fdf40033ca31676a5d4fee5171e4674e3e9b81ff2d2b20b0c7f54a46",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/salary-structure.resolver.ts": {
+        "version": "3e43d2ce80c8ed2f103e7dd04bb0889cfb2b99273c001d48d0ffeba014c3a40a",
+        "signature": "e754c7c5a4d0614741a89c785eb425f21173a9ceb8458ec345a9c12c8dd9cdef",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/salary-structure.schema.ts": {
+        "version": "18772ea3728c5c6663df0ddf2841c009d05e1d5bfa70b9916abe2527053a27f2",
+        "signature": "cb500aa6b3134b89dd642d2235a9261ce41581430c4d393c3cd619ba6b056f38",
+        "affectsGlobalScope": false
+      },
+      "../src/app/salary/salary-structure/salary-structure.module.ts": {
+        "version": "01811cf6721a7b0e0a64faadff51b8d4f25164420bd620faf7950d308127d05b",
+        "signature": "1f674b61a577ceea980db251baf896ddebf63d2d2bd6e5abf4897d4c1b78b7e4",
+        "affectsGlobalScope": false
+      },
       "../src/app/salary/service/salary-update.mutation.service.ts": {
         "version": "0926bb616c80bf2a401018d0ae46c1db85cd4de9d6cbdba2bd4966d8b15034fa",
         "signature": "aaf50e43c9cd6e02029d4bc5a8268c32a36d90c732a2b48a92262866f66e7d23",
@@ -4956,7 +5001,7 @@
         "affectsGlobalScope": false
       },
       "../src/app/salary/salary.module.ts": {
-        "version": "9d3d3f25360f9f855cb2f42fa2eab16fb3d7e52ee7f1c31a4d953de7465ad0b6",
+        "version": "7719136e90658c6a582e881b076e018efabfb30577098d1e9b5757cb05f4777e",
         "signature": "7beb6703cf83727cba4515057ff413ee21bea54e5cc7a4ac42de0e2474cdf6d2",
         "affectsGlobalScope": false
       },
@@ -9201,11 +9246,53 @@
         "../src/app/shared/employee.type.ts",
         "../src/app/shared/salary.type.ts"
       ],
+      "../src/app/salary/salary-structure/salary-structure-model.ts": [
+        "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/app/shared/salary-structure-meta-key-type.enum.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure-repository.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/mongoose/index.d.ts",
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../src/app/salary/salary-structure/salary-structure-repository.service.ts",
+        "../src/app/salary/salary-structure/salary-structure.resolver.ts",
+        "../src/app/salary/salary-structure/salary-structure.schema.ts",
+        "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure.resolver.ts": [
+        "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts",
+        "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure.schema.ts": [
+        "../node_modules/mongoose/index.d.ts"
+      ],
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts": [
+        "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/app/shared/salary-structure-meta-key-type.enum.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/salary/salary-structure/salary-structure-repository.service.ts",
+        "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
       "../src/app/salary/salary.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../src/app/employee/employee.module.ts",
         "../src/app/salary/salary-repository.service.ts",
+        "../src/app/salary/salary-structure/salary-structure.module.ts",
         "../src/app/salary/salary.resolver.ts",
         "../src/app/salary/salary.schema.ts",
         "../src/app/salary/service/salary-read.query.service.ts",
@@ -9243,6 +9330,9 @@
       "../src/app/shared/employee.type.ts": [
         "../node_modules/mongoose/index.d.ts",
         "../src/app/shared/salary.type.ts"
+      ],
+      "../src/app/shared/salary-structure.type.ts": [
+        "../node_modules/mongoose/index.d.ts"
       ],
       "../src/app/shared/salary.type.ts": [
         "../node_modules/mongoose/index.d.ts"
@@ -13233,6 +13323,29 @@
         "../src/app/shared/employee.type.ts",
         "../src/app/shared/salary.type.ts"
       ],
+      "../src/app/salary/salary-structure/salary-structure-model.ts": [
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure-repository.service.ts": [
+        "../node_modules/mongoose/index.d.ts",
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure.resolver.ts": [
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts"
+      ],
+      "../src/app/salary/salary-structure/salary-structure.schema.ts": [
+        "../node_modules/mongoose/index.d.ts"
+      ],
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts": [
+        "../src/app/shared/salary-structure.type.ts"
+      ],
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts": [
+        "../src/app/salary/salary-structure/salary-structure-model.ts",
+        "../src/app/salary/salary-structure/salary-structure-repository.service.ts",
+        "../src/app/shared/salary-structure.type.ts"
+      ],
       "../src/app/salary/salary.resolver.ts": [
         "../src/app/salary/service/salary-read.query.service.ts",
         "../src/app/salary/service/salary-update.mutation.service.ts",
@@ -13256,6 +13369,9 @@
       "../src/app/shared/employee.type.ts": [
         "../node_modules/mongoose/index.d.ts",
         "../src/app/shared/salary.type.ts"
+      ],
+      "../src/app/shared/salary-structure.type.ts": [
+        "../node_modules/mongoose/index.d.ts"
       ],
       "../src/app/shared/salary.type.ts": [
         "../node_modules/mongoose/index.d.ts"
@@ -14285,6 +14401,13 @@
       "../src/app/employee/services/employee-read-query.model.ts",
       "../src/app/employee/services/employee-read-query.service.ts",
       "../src/app/salary/salary-repository.service.ts",
+      "../src/app/salary/salary-structure/salary-structure-model.ts",
+      "../src/app/salary/salary-structure/salary-structure-repository.service.ts",
+      "../src/app/salary/salary-structure/salary-structure.module.ts",
+      "../src/app/salary/salary-structure/salary-structure.resolver.ts",
+      "../src/app/salary/salary-structure/salary-structure.schema.ts",
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.model.ts",
+      "../src/app/salary/salary-structure/service/create-salary-structure-mutation.service.ts",
       "../src/app/salary/salary.module.ts",
       "../src/app/salary/salary.resolver.ts",
       "../src/app/salary/salary.schema.ts",
@@ -14293,6 +14416,8 @@
       "../src/app/salary/service/salary-update.mutation.service.ts",
       "../src/app/salary/service/salary.model.ts",
       "../src/app/shared/employee.type.ts",
+      "../src/app/shared/salary-structure-meta-key-type.enum.ts",
+      "../src/app/shared/salary-structure.type.ts",
       "../src/app/shared/salary.type.ts",
       "../src/main.ts"
     ]

@@ -1,0 +1,1 @@
+{"version":3,"file":"salary-structure.schema.js","sourceRoot":"","sources":["../../../../src/app/salary/salary-structure/salary-structure.schema.ts"],"names":[],"mappings":";;;AAEA,qCAAqC;AAExB,QAAA,qBAAqB,GAAG,IAAI,QAAQ,CAAC,MAAM,CAAC;IACrD,eAAe,EAAE,MAAM;IACvB,IAAI,EAAE,MAAM;IACZ,QAAQ,EAAE,OAAO;CAEpB,EAAE,EAAE,UAAU,EAAE,IAAI,EAAE,CAAC,CAAC"}
