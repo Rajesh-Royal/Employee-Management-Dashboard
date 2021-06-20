@@ -5,6 +5,7 @@
 type UserLoginDto {
   userId: ID!
   token: String
+  username: String
 }
 
 type UserRegisterDto {

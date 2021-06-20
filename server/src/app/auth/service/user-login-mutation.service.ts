@@ -33,7 +33,7 @@ export class UserLoginMutationService {
         if(await this.validatePassword(login.password, login.salt, operation.password)){
             this.Logger.log(`Login of user :: ${login?.username} :: successfully`)
             return new UserLoginDto({
-                userId: login._id,
+                _id: login._id,
                 username: login.username,
                 token: accessToken,
             });
