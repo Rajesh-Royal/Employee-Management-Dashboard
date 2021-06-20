@@ -7,7 +7,7 @@ const DarkModeToggle = () => {
   useEffect(() => {
     if (
       localStorage.emp_theme === "dark" ||
-      (!("bid_Theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      (!("emp_Theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
       setDark(true);
@@ -21,13 +21,17 @@ const DarkModeToggle = () => {
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
   };
+
+  useEffect(() => {
+    dark ? (localStorage.emp_theme = "dark") : (localStorage.emp_theme = "light");
+  }, [dark]);
+
   return (
     <button
       type="button"
       className="focus:outline-none"
       onClick={() => {
         setDark(!dark);
-        dark ? (localStorage.emp_theme = "dark") : (localStorage.emp_theme = "light");
         setDarkMode();
       }}
       aria-label="Toggle color mode">

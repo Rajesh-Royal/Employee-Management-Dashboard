@@ -1,13 +1,12 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
-import "./assets/global-css/tailwind.css";
 import App from "./App";
+import "./assets/global-css/tailwind.css";
 import { projectData } from "./Data/data";
 
 const client = new ApolloClient({
-  uri: projectData.graphqlServerLive,
+  uri: projectData.graphqlServerLocal,
   cache: new InMemoryCache(),
 });
 
