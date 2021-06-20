@@ -20,7 +20,7 @@ export class CreateSalaryMetaKeyMutationModel {
     @Field(() => String)
     public readonly field_name: string = undefined;
 
-    @Field(() => SalaryStructureMetaKeyTypeEnum)
+    @Field(() => String)
     public readonly type: string = undefined;
 
     @Field(() => Boolean)

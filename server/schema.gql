@@ -24,12 +24,8 @@ type SalaryStructureModel {
   _id: ID
   salary_meta_key: String!
   field_name: String!
-  type: SalaryStructureMetaKeyTypeEnum!
+  type: String!
   disabled: Boolean!
-}
-
-enum SalaryStructureMetaKeyTypeEnum {
-  Number
 }
 
 type ReadEmployeeSalaryDto {
@@ -72,7 +68,7 @@ type CreateSalaryMetaKeyMutationModel {
   _id: ID
   salary_meta_key: String!
   field_name: String!
-  type: SalaryStructureMetaKeyTypeEnum!
+  type: String!
   disabled: Boolean!
 }
 
@@ -87,6 +83,6 @@ type Query {
 type Mutation {
   employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
-  CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: SalaryStructureMetaKeyTypeEnum!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
+  CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
   employeeMetaSalaryCreate(_id: ID, employeeId: String!, value: Float!, meta_key: String!, meta_field_id: String!): EmployeeSalaryCreateMutationModel!
 }
