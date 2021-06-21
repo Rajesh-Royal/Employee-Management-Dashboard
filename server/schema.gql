@@ -102,4 +102,5 @@ type Mutation {
   employeeMetaSalaryCreate(_id: ID, employeeId: String!, value: Float!, meta_key: String!, meta_field_id: String!): EmployeeSalaryCreateMutationModel!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
   LoginUser(username: String, password: String): UserLoginDto!
+  isUserLogin(userId: String!): Boolean!
 }

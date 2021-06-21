@@ -29,9 +29,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
         case 401:
           // TODO: Fix toast message, it's not showing without setTimeout
           toast.error(err?.message);
-          setTimeout(() => {
-            window.location.href = "/auth/login";
-          }, 2000);
+          window.location.href = "/auth/login";
           break;
         default:
           break;
