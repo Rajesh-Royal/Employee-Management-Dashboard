@@ -1,18 +1,13 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./assets/global-css/tailwind.css";
-import { projectData } from "./Data/data";
-
-const client = new ApolloClient({
-  uri: projectData.graphqlServerLocal,
-  cache: new InMemoryCache(),
-});
+import ApolloGqlClient from "./core/service/apollo.gql.service";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={ApolloGqlClient}>
       <App />
     </ApolloProvider>
   </React.StrictMode>,
