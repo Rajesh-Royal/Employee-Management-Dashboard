@@ -1,5 +1,5 @@
 import { ArgsType, Field, ObjectType } from "@nestjs/graphql";
-import { IsString, Matches, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsString, Matches, MaxLength, MinLength } from "class-validator";
 import { AuthModuleType } from "src/app/shared/authModule.type";
 
 
@@ -24,6 +24,7 @@ export class RegisterNewUserMutationModel {
     @Field(() => String)
     public password: string = undefined;
 
+    @IsEmail()
     @Field(() => String)
     public readonly email: string = undefined;
 
