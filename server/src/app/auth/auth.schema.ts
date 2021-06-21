@@ -10,7 +10,10 @@ export const AuthModuleSchema = new mongoose.Schema({
     salt: String,
     email: {
         type: String,
-        unique: true
+        unique: true,
+        error: {
+
+        }
     },
     mobile: {
         type: Number,
@@ -18,4 +21,6 @@ export const AuthModuleSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-AuthModuleSchema.plugin(uniqueValidator);
+AuthModuleSchema.plugin(uniqueValidator, {
+    message: '{VALUE} already exist'
+});
