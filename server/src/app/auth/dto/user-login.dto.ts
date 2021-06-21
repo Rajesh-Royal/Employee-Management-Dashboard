@@ -4,8 +4,10 @@ import { Field, ID, ObjectType } from "@nestjs/graphql";
 @ObjectType()
 export class UserLoginDto {
 
-    @Field(() => ID)
-    public readonly userId: string = undefined;
+    @Field(() => ID, {
+        nullable: true
+    })
+    public readonly userId?: string = undefined;
 
     @Field(() => String, {
         nullable: true

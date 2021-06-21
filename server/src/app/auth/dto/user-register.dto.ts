@@ -10,8 +10,8 @@ export class UserRegisterDto {
     @Field(() => String)
     public readonly username: string = undefined;
 
-    @Field(() => String)
-    public readonly password: string = undefined;
+    // @Field(() => String)
+    // public readonly password: string = undefined;
 
     @Field(() => String)
     public readonly email: string = undefined;
@@ -25,14 +25,14 @@ export class UserRegisterDto {
     @Field(() => Date)
     public readonly updatedAt: string = undefined;
 
-    @Field(() => String)
-    public readonly salt: string = undefined;
+    // @Field(() => String)
+    // public readonly salt: string = undefined;
 
     constructor(initialValue?: AuthModuleType | any){
         this._id = initialValue?._id
         this.username = initialValue?.username;
-        this.password = initialValue?.password;
-        this.salt = initialValue?.salt;
+        // this.password = initialValue?.password;
+        // this.salt = initialValue?.salt;
         this.email = initialValue?.email;
         this.mobile = initialValue?.mobile;
         this.updatedAt = initialValue?.updatedAt;
