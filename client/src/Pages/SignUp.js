@@ -1,8 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { projectTheme } from "../Data/projectTheme";
+import { useMutation } from "@apollo/client";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import Button from "../Components/common/Button";
+import FormInputBox from "../Components/common/FormInputBox";
+import { USER_SIGNUP } from "../core/gql-operations/mutation/user-signup-mutation";
 
 const SignUp = () => {
+  const [signupUser] = useMutation(USER_SIGNUP);
+  const [userCredentials, setUserCredentials] = useState({
+    username: "",
+    password: "",
+    email: "",
+    mobile: "",
+  });
+  const onInputChange = (e) => {
+    if (e.target.name === "mobile") {
+      console.log("updating");
+      setUserCredentials({
+        ...userCredentials,
+        [e.target.name]: parseInt(e.target.value) || "",
+      });
+      return;
+    }
+    setUserCredentials({
+      ...userCredentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const history = useHistory();
   return (
     <div className={"w-screen h-screen overflow-hidden bg-gray-700"}>
       <div className="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
@@ -11,63 +37,90 @@ const SignUp = () => {
           style={{ height: "500px" }}>
           <div className="flex flex-col w-full md:w-1/2 p-4">
             <div className="flex flex-col flex-1 justify-center mb-8">
-              <h1 className="text-4xl text-center font-thin">Sign Up</h1>
+              <h1 className="text-4xl text-center font-thin">Welcome Back</h1>
               <div className="w-full mt-4">
-                <form className="form-horizontal w-3/4 mx-auto" autoComplete="off">
+                <form className="form-horizontal w-3/4 mx-auto">
                   <div className="flex flex-col mt-4">
-                    <input
-                      id="username"
-                      type="text"
-                      className="flex-grow h-8 px-2 border rounded border-grey-400 focus:outline-none appearance-none"
-                      name="username"
+                    <FormInputBox
+                      label=""
+                      icon={null}
                       placeholder="Username"
-                    />
-                  </div>
-                  <div className="flex flex-col mt-4">
-                    <input
-                      id="email"
+                      name="username"
                       type="text"
-                      className="flex-grow h-8 px-2 border rounded border-grey-400 focus:outline-none appearance-none"
-                      name="email"
-                      placeholder="Email"
+                      textLeft={true}
+                      ariaLabel="username"
+                      value={userCredentials?.username}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
-
-                  <div className="flex flex-col mt-4">
-                    <input
-                      id="mobile"
-                      type="text"
-                      className="flex-grow h-8 px-2 border rounded border-grey-400 focus:outline-none appearance-none"
-                      name="mobile"
-                      placeholder="Mobile"
-                    />
-                  </div>
-                  <div className="flex flex-col mt-4">
-                    <input
-                      id="password"
-                      type="password"
-                      className="flex-grow h-8 px-2 rounded border border-grey-400 focus:outline-none appearance-none"
-                      name="password"
-                      required
+                  <div className="flex flex-col -mt-4">
+                    <FormInputBox
+                      label=""
+                      icon={null}
                       placeholder="Password"
+                      name="password"
+                      type="password"
+                      textLeft={true}
+                      ariaLabel="password"
+                      value={userCredentials?.password}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                  <div className="flex flex-col -mt-4">
+                    <FormInputBox
+                      label=""
+                      icon={null}
+                      placeholder="Email"
+                      name="email"
+                      type="email"
+                      textLeft={true}
+                      ariaLabel="email"
+                      value={userCredentials?.email}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                  <div className="flex flex-col -mt-4">
+                    <FormInputBox
+                      label=""
+                      icon={null}
+                      placeholder="Mobile"
+                      name="mobile"
+                      type="number"
+                      textLeft={true}
+                      ariaLabel="mobile"
+                      value={userCredentials?.mobile}
+                      onChange={(e) => onInputChange(e)}
                     />
                   </div>
                   <div className="flex flex-col mt-8">
-                    <button
-                      className={`${projectTheme?.background} hover:bg-blue-500 text-white text-sm font-semibold py-2 px-4 rounded focus:outline-none`}
-                      onClick={(e) => e.preventDefault()}>
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        signupUser({
+                          variables: userCredentials,
+                        })
+                          .then((data) => {
+                            toast.success(`Registered new user ${userCredentials?.username}`);
+                            history.push("/auth/login");
+                            return data;
+                          })
+                          .catch((error) => {
+                            toast.error(
+                              `${error.message}. Data validation failed, please check your input data`
+                            );
+                            return error;
+                          });
+                      }}>
                       Signup
-                    </button>
+                    </Button>
                   </div>
                 </form>
-                <div className="text-center mt-4">
-                  <Link
-                    className="no-underline hover:underline text-blue-dark text-xs"
-                    to="/auth/login">
-                    Login
-                  </Link>
-                </div>
               </div>
+            </div>
+            <div className="flex flex-wrap items-center justify-between mt-4">
+              <Link className="no-underline hover:underline text-gray-400 text-xs" to="/auth/login">
+                Login
+              </Link>
             </div>
           </div>
           <div
