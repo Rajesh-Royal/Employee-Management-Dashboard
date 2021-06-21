@@ -19,7 +19,7 @@ export class AuthResolver {
     public async RegisterUser(@Args(ValidationPipe) arguments_: RegisterNewUserMutationModel): Promise<AuthModuleType | any> {
         const operation = new RegisterNewUserMutationModel(arguments_);
 
-        this.registerNewUserMutationService.serve(operation).then(data => {
+        return this.registerNewUserMutationService.serve(operation).then(data => {
             return data;
         });
     }
@@ -28,10 +28,9 @@ export class AuthResolver {
     public async LoginUser(@Args() arguments_: UserLoginMutationModel): Promise<AuthModuleType | any> {
         const operation = new UserLoginMutationModel(arguments_);
 
-        this.userLoginMutationService.serve(operation).then(data => {
-            console.log(data)
+        return await this.userLoginMutationService.serve(operation).then(data => {
             return data;
-        });
+        })
     }
 
 }

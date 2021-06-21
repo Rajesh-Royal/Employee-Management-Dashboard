@@ -14,6 +14,7 @@ const localMongoURI = "mongodb://localhost:27017/employeeManagement";
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       playground: true,
+      context: ({ req }) => ({ req })
     }),
     ConfigModule.forRoot({ envFilePath: `${process.env.NODE_ENV}.env` }),
     MongooseModule.forRoot(localMongoURI , {

@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type UserLoginDto {
-  userId: ID!
+  userId: ID
   token: String
   username: String
 }
@@ -11,12 +11,10 @@ type UserLoginDto {
 type UserRegisterDto {
   _id: ID!
   username: String!
-  password: String!
   email: String!
   mobile: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  salt: String!
 }
 
 """
@@ -103,5 +101,5 @@ type Mutation {
   CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
   employeeMetaSalaryCreate(_id: ID, employeeId: String!, value: Float!, meta_key: String!, meta_field_id: String!): EmployeeSalaryCreateMutationModel!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
-  LoginUser(username: String!, password: String!): UserLoginDto!
+  LoginUser(username: String, password: String): UserLoginDto!
 }
