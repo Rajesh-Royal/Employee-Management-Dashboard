@@ -10,8 +10,8 @@
 // };
 
 export const projectTheme = {
-  background: "bg-blue-500",
-  borderColor: "border-blue-500",
-  textColor: "text-blue-500",
-  closeXButtonColor: "text-blue-500",
+  background: "bg-blue-400",
+  borderColor: "border-blue-400",
+  textColor: "text-blue-400",
+  closeXButtonColor: "text-blue-400",
 };
