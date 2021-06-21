@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from "react";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import Header from "../Components/common/Header";
+import { ProtectedRoute } from "../Components/common/ProtectedRoute";
 import GlobalErrorBoundary from "../Components/global/GlobalErrorBoundary";
 import ThemedSuspense from "../Components/global/ThemedSuspense";
 import ToastMessageContainer from "../Components/global/ToastContainer";
-import Routes from "../Routes/Routes";
+import { adminRoutes, userRoutes } from "../Routes/Routes";
 
 const Page404 = lazy(() => import("../Pages/404"));
 
@@ -19,13 +20,25 @@ function Layout() {
       <GlobalErrorBoundary>
         <Suspense fallback={<ThemedSuspense className="mt-5" />}>
           <Switch>
-            {Routes.map((route, i) => {
+            {/* admin routes private */}
+            {userRoutes.map((route, i) => {
               return route.component ? (
                 <Route
                   key={i}
                   exact
                   path={route.path}
                   render={(props) => <route.component {...props} />}
+                />
+              ) : null;
+            })}
+            {/* user routes public */}
+            {adminRoutes.map((route, i) => {
+              return route.component ? (
+                <ProtectedRoute
+                  key={i}
+                  exact
+                  path={route.path}
+                  component={(props) => <route.component {...props} />}
                 />
               ) : null;
             })}
