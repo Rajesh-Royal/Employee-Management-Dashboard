@@ -27,14 +27,14 @@ export class UserLoginMutationService {
 
         const login = await this.authRepositoryService.userLogin(operation);
 
-        const payload: JwtPayload = { username: login.username};
+        const payload: JwtPayload = { username: login?.username};
         const accessToken = await this.jwtService.sign(payload);
 
-        if(await this.validatePassword(login.password, login.salt, operation.password)){
+        if(login && await this.validatePassword(login?.password, login?.salt, operation.password)){
             this.Logger.log(`Login of user :: ${login?.username} :: successfully`)
             return new UserLoginDto({
-                _id: login._id,
-                username: login.username,
+                _id: login?._id,
+                username: login?.username,
                 token: accessToken,
             });
         }else{
