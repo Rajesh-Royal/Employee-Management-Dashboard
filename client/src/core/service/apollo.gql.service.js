@@ -30,7 +30,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
           // TODO: Fix toast message, it's not showing without setTimeout
           toast.error(err?.message);
           setTimeout(() => {
-            window.location.href = "/";
+            window.location.href = "/auth/login";
           }, 2000);
           break;
         default:
