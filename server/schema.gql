@@ -22,14 +22,6 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type EmployeeSalaryCreateMutationModel {
-  _id: ID
-  employeeId: String!
-  value: Float!
-  meta_key: String!
-  meta_field_id: String!
-}
-
 type EmployeeCreateMutationModel {
   _id: ID
   firstName: String!
@@ -40,20 +32,17 @@ type EmployeeCreateMutationModel {
   salary: ID
 }
 
-type SalaryStructureModel {
-  _id: ID
-  salary_meta_key: String!
-  field_name: String!
+type SalaryTypeDto {
+  value: Float!
+  meta_key: String!
+  meta_field_id: String!
   type: String!
-  disabled: Boolean!
 }
 
 type ReadEmployeeSalaryDto {
   _id: ID
   employeeId: EmployeeCreateMutationModel!
-  value: Float!
-  meta_key: String!
-  meta_field_id: SalaryStructureModel!
+  salary: [SalaryTypeDto!]!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -87,6 +76,13 @@ type CreateSalaryMetaKeyMutationModel {
   disabled: Boolean!
 }
 
+input CustomEmployeeSalaryType {
+  value: Float!
+  meta_key: String!
+  meta_field_id: String!
+  type: String!
+}
+
 type Query {
   employeeListRead: [EmployeeReadQueryModel!]!
   employeeRead(employeeId: ID): EmployeeReadQueryModel!
@@ -99,7 +95,7 @@ type Mutation {
   employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
   CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
-  employeeMetaSalaryCreate(_id: ID, employeeId: String!, value: Float!, meta_key: String!, meta_field_id: String!): EmployeeSalaryCreateMutationModel!
+  employeeMetaSalaryCreate(_id: ID, employeeId: String!, salary: [CustomEmployeeSalaryType!]!): Boolean!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
   LoginUser(username: String, password: String): UserLoginDto!
   isUserLogin(userId: String!): Boolean!

@@ -12,15 +12,23 @@ export class EmployeeSalariesRepositoryService {
     ){}
 
     public createEmployeeSalary(operation: EmployeeSalaryCreateMutationModel){
-        return new this.employeeSalariesModel({
-            ...(operation.employeeId !== undefined && { employeeId: operation.employeeId }),
-            ...(operation.meta_key !== undefined && {  meta_key: operation.meta_key }),
-            ...(operation.meta_field_id !== undefined && { meta_field_id: operation.meta_field_id }),
-            ...(operation.value !== undefined && { value: operation.value }),
-        }).save();
+        // convert to json then parse it to remove null from array.
+        // const EmployeeSalaries = JSON.parse(JSON.stringify(operation.salary))
+        return this.employeeSalariesModel.updateOne(
+            {
+            employeeId: operation.employeeId
+            },
+            {
+                ...(operation.employeeId !== undefined && { employeeId: operation.employeeId }),
+                salary: operation.salary
+            },
+            {
+                upsert: true
+            }
+        )
     }
 
     public readEmployeeSalary(operation: ReadEmployeeSalaryQueryModel){
-        return this.employeeSalariesModel.find({employeeId: operation.employeeId}).populate("employeeId").populate("meta_field_id").exec();
+        return this.employeeSalariesModel.find({employeeId: operation.employeeId}).populate("employeeId").exec();
     }
 }

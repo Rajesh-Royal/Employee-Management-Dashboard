@@ -16,8 +16,8 @@ export class EmployeeSalariesResolver {
     ){}
 
   @UseGuards(GqlAuthGuard)
-  @Mutation(() => EmployeeSalaryCreateMutationModel)
-  public async employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<EmployeeSalaryFieldsType> {
+  @Mutation(() => Boolean)
+  public async employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);
 
     return await this.employeeSalariesCreateMutationService.serve(operation).then(data => data);

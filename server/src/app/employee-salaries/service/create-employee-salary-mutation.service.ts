@@ -12,9 +12,13 @@ export class EmployeeSalaryCreateMutationService {
   }
 
   public async serve(operation: EmployeeSalaryCreateMutationModel) {
-    console.log("reach here")
+
     const employeeSalary = await this.employeeSalariesRepositoryService.createEmployeeSalary(operation)
 
-    return employeeSalary;
+    if(employeeSalary.nModified > 0 || employeeSalary.upserted){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
