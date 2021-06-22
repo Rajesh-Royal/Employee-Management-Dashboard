@@ -5,10 +5,13 @@ export const EmployeeSalarySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "EmployeeType"
     },
-    meta_key: String,
-    value: Number,
-    meta_field_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "SalaryStructureType"
-    }
+    salary: [{
+        meta_key: String,
+        value: Number,
+        type: String,
+        meta_field_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "SalaryStructureType"
+        }
+    }]
 }, {timestamps: true});
