@@ -1,6 +1,22 @@
 import { ArgsType, Field, ID, ObjectType } from "@nestjs/graphql";
 import { EmployeeCreateMutationModel } from "src/app/employee/services/employee-create.mutation.model";
-import { SalaryStructureModel } from "src/app/salary/salary-structure/salary-structure-model";
+
+@ArgsType()
+@ObjectType()
+class SalaryTypeDto {
+    @Field(() => Number)
+    public readonly value: number = undefined;
+
+    @Field(() => String)
+    public readonly meta_key: string = undefined;
+
+    @Field(() => String)
+    public readonly meta_field_id: string = undefined;
+    // ToDo: use SalaryStructureModel if we need to get field values
+
+    @Field(() => String)
+    public readonly type: string = undefined;
+}
 
 @ObjectType()
 @ArgsType()
@@ -13,14 +29,8 @@ export class ReadEmployeeSalaryDto {
     @Field(() => EmployeeCreateMutationModel)
     public readonly employeeId: string = undefined;
 
-    @Field(() => Number)
-    public readonly value: number = undefined;
-
-    @Field(() => String)
-    public readonly meta_key: string = undefined;
-
-    @Field(() => SalaryStructureModel)
-    public readonly meta_field_id: string = undefined;
+    @Field(() =>[SalaryTypeDto])
+    public readonly salary: SalaryTypeDto[] = [];
 
     @Field(() => Date, {
         nullable: true
@@ -35,9 +45,10 @@ export class ReadEmployeeSalaryDto {
     constructor(initialValue: any){
         this.employeeId = initialValue?.employeeId,
         this._id = initialValue?._id;
-        this.meta_key = initialValue?.meta_key;
-        this.meta_field_id = initialValue?.meta_field_id;
-        this.value = initialValue?.value;
+        this.salary = initialValue?.salary;
+        // this.meta_key = initialValue?.meta_key;
+        // this.meta_field_id = initialValue?.meta_field_id;
+        // this.value = initialValue?.value;
         this.createdAt = initialValue?.createdAt;
         this.updatedAt = initialValue?.updatedAt;
     }
