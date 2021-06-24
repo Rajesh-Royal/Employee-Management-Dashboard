@@ -12,7 +12,6 @@ import { SectionHeading, SectionHeadingSmall } from "../../common/Typography";
 
 const EmployeeSalaryDetailsForm = (props) => {
   if (!props?.employeeSalary?.salary?.salary) {
-    console.log(props?.employeeSalary);
     return null;
   }
 
@@ -54,7 +53,26 @@ const EmployeeSalaryDetailsForm = (props) => {
   // useEffect as callback function of setState
   useEffect(() => {
     setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
-    console.log(salaryStructure);
+    let value = Object.values(salaryStructure)?.map((salary, index) => {
+      if (salary?.type === "salary") {
+        return (
+          <FormInputBox
+            key={salary?.meta_field_id}
+            id={salary?.meta_field_id}
+            data-salarytype="salary"
+            label={makeWords(salary?.meta_key)}
+            icon="₹"
+            placeholder="$$"
+            name={salary?.meta_key}
+            type="number"
+            ariaLabel={salary?.meta_key}
+            value={salary?.value}
+            onChange={(e) => onSalaryStructureDataChange(e, index)}
+          />
+        );
+      }
+    });
+    console.log(value);
   }, [salaryStructure]);
 
   useEffect(() => {
@@ -82,50 +100,54 @@ const EmployeeSalaryDetailsForm = (props) => {
           <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
             Salary
           </SectionHeadingSmall>
-          {Object.values(salaryStructure)?.map((salary, index) => {
-            if (salary?.type === "salary") {
-              return (
-                <FormInputBox
-                  key={salary?.meta_field_id}
-                  id={salary?.meta_field_id}
-                  data-salarytype="salary"
-                  label={makeWords(salary?.meta_key)}
-                  icon="₹"
-                  placeholder="$$"
-                  name={salary?.meta_key}
-                  type="number"
-                  ariaLabel={salary?.meta_key}
-                  value={salary?.value}
-                  onChange={(e) => onSalaryStructureDataChange(e, index)}
-                />
-              );
-            }
-          })}
+          {Object.values(salaryStructure).length > 0
+            ? Object.values(salaryStructure)?.map((salary, index) => {
+                if (salary?.type === "salary") {
+                  return (
+                    <FormInputBox
+                      key={salary?.meta_field_id}
+                      id={salary?.meta_field_id}
+                      data-salarytype="salary"
+                      label={makeWords(salary?.meta_key)}
+                      icon="₹"
+                      placeholder="$$"
+                      name={salary?.meta_key}
+                      type="number"
+                      ariaLabel={salary?.meta_key}
+                      value={salary?.value}
+                      onChange={(e) => onSalaryStructureDataChange(e, index)}
+                    />
+                  );
+                }
+              })
+            : null}
         </div>
         {/* employee Deduction Section */}
         <div className="deduction w-full md:w-1/3 mt-8 md:mt-0">
           <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
             Deductions
           </SectionHeadingSmall>
-          {Object.values(salaryStructure)?.map((salary, index) => {
-            if (salary?.type === "deduction") {
-              return (
-                <FormInputBox
-                  key={salary?.meta_field_id}
-                  id={salary?.meta_field_id}
-                  data-salarytype="deduction"
-                  label={makeWords(salary?.meta_key)}
-                  icon="₹"
-                  placeholder="$$"
-                  name={salary?.meta_key}
-                  type="number"
-                  ariaLabel={salary?.meta_key}
-                  value={salary?.value}
-                  onChange={(e) => onSalaryStructureDataChange(e, index)}
-                />
-              );
-            }
-          })}
+          {Object.values(salaryStructure).length > 0
+            ? Object.values(salaryStructure)?.map((salary, index) => {
+                if (salary?.type === "deduction") {
+                  return (
+                    <FormInputBox
+                      key={salary?.meta_field_id}
+                      id={salary?.meta_field_id}
+                      data-salarytype="deduction"
+                      label={makeWords(salary?.meta_key)}
+                      icon="₹"
+                      placeholder="$$"
+                      name={salary?.meta_key}
+                      type="number"
+                      ariaLabel={salary?.meta_key}
+                      value={salary?.value}
+                      onChange={(e) => onSalaryStructureDataChange(e, index)}
+                    />
+                  );
+                }
+              })
+            : null}
         </div>
       </div>
       <div className="flex justify-between items-center mt-3">
@@ -141,12 +163,12 @@ const EmployeeSalaryDetailsForm = (props) => {
             employeeSalaryUpdateMutation({
               variables: {
                 employeeId: props?.employeeSalary?._id,
-                ...salaryStructure,
+                salary: Object.values(salaryStructure)?.map((salary) => salary),
               },
               refetchQueries: ["employeeListRead"],
               // eslint-disable-next-line prettier/prettier
             }).then((res) => {
-                if (res.data.employeeSalaryUpdate) {
+                if (res.data?.employeeMetaSalaryUpdate) {
                   toast.success("Salary Updated successfully");
                 } else {
                   toast.info("Salary already exist");

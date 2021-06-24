@@ -99,8 +99,8 @@ type Query {
 
 type Mutation {
   employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
-  employeeMetaSalaryCreate(_id: ID, employeeId: String!, salary: [CustomEmployeeSalaryType!]!): Boolean!
-  employeeMetaSalaryUpdate(_id: ID, employeeId: String!, salary: [CustomEmployeeSalaryType!]!): Boolean!
+  employeeMetaSalaryCreate(_id: ID, employeeId: ID!, salary: [CustomEmployeeSalaryType!]!): Boolean!
+  employeeMetaSalaryUpdate(_id: ID, employeeId: ID!, salary: [CustomEmployeeSalaryType!]!): Boolean!
   CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
