@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sun, Moon } from "react-feather";
+import { Moon, Sun } from "react-feather";
 
 const DarkModeToggle = () => {
   const [dark, setDark] = useState(false);
