@@ -1,6 +1,4 @@
-import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { GqlAuthGuard } from "src/app/auth/guards/auth.guard";
 import { SalaryStructureType } from "src/app/shared/salary-structure.type";
 import { SalaryStructureModel } from "./salary-structure-model";
 import { CreateSalaryMetaKeyMutationModel } from "./service/create-salary-structure-mutation.model";
@@ -14,13 +12,13 @@ export class SalaryStructureResolver {
         private readonly readSalaryMetaKeyQueryService: ReadSalaryMetaKeysQueryService,
     ){}
 
-    @UseGuards(GqlAuthGuard)
+    // @UseGuards(GqlAuthGuard)
     @Mutation(() => CreateSalaryMetaKeyMutationModel)
     public  async CreateEmployeeSalaryStructureMetaField(@Args() _arguments: SalaryStructureModel): Promise<SalaryStructureType> {
         const operation = new SalaryStructureModel(_arguments);
         return await this.createSalaryMetaKeyMutationService.serve(operation).then(data => data);
     }
-    @UseGuards(GqlAuthGuard)
+    // @UseGuards(GqlAuthGuard)
     @Query(() => [CreateSalaryMetaKeyMutationModel])
     public  async getEmployeeSalaryStructureMetaFields(): Promise<boolean> {
         return await this.readSalaryMetaKeyQueryService.serve().then(data => data);

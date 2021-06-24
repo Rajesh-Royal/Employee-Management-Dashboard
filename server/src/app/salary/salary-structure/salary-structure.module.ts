@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EmployeeSalariesModule } from 'src/app/employee-salaries/employee-salaries.module';
 import { SalaryStructureRepositoryService } from './salary-structure-repository.service';
 import { SalaryStructureResolver } from './salary-structure.resolver';
 import { SalaryStructureSchema } from './salary-structure.schema';
@@ -17,6 +18,7 @@ import { ReadSalaryMetaKeysQueryService } from './service/create-salary-structur
         collection: "SalaryStructure"
        }
     ]),
+    forwardRef(() => EmployeeSalariesModule)
   ],
   providers: [
       SalaryStructureResolver,

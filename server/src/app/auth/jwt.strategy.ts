@@ -4,8 +4,6 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { AuthModuleType } from "../shared/authModule.type";
 import { AuthRepositoryService } from "./auth-repository-service";
 
-console.log("running")
-
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     private Logger = new Logger("JwtStrategy");

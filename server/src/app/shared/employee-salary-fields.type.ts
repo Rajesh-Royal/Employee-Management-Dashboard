@@ -6,7 +6,7 @@ export interface EmployeeSalaryFieldsType extends Document {
     salary: SalaryType[]
 }
 
-interface SalaryType {
+export interface SalaryType {
     meta_key: string,
     value: number,
     meta_field_id: string,

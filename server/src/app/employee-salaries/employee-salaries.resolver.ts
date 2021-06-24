@@ -15,7 +15,7 @@ export class EmployeeSalariesResolver {
         private readEmployeeSalaryQueryService: ReadEmployeeSalaryQueryService,
     ){}
 
-  @UseGuards(GqlAuthGuard)
+  // @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   public async employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);

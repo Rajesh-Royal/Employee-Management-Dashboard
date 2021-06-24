@@ -47,15 +47,18 @@ type ReadEmployeeSalaryDto {
   updatedAt: DateTime
 }
 
-type EmployeeSalaryReadQueryModel {
+type CreateSalaryMetaKeyMutationModel {
   _id: ID
-  employee: EmployeeCreateMutationModel
-  basic: Float
-  da: Float
-  pa: Float
-  hra: Float
-  pt: Float
-  epf: Float
+  salary_meta_key: String!
+  field_name: String!
+  type: String!
+  disabled: Boolean!
+}
+
+type EmployeeSalaryTypeDto {
+  _id: ID
+  employeeId: ID
+  salary: [SalaryTypeDto!]
 }
 
 type EmployeeReadQueryModel {
@@ -65,15 +68,18 @@ type EmployeeReadQueryModel {
   email: String
   city: String
   ctc: Float
-  salary: EmployeeSalaryReadQueryModel
+  salary: EmployeeSalaryTypeDto
 }
 
-type CreateSalaryMetaKeyMutationModel {
+type EmployeeSalaryReadQueryModel {
   _id: ID
-  salary_meta_key: String!
-  field_name: String!
-  type: String!
-  disabled: Boolean!
+  employee: EmployeeCreateMutationModel
+  basic: Float
+  da: Float
+  pa: Float
+  hra: Float
+  pt: Float
+  epf: Float
 }
 
 input CustomEmployeeSalaryType {
@@ -86,16 +92,16 @@ input CustomEmployeeSalaryType {
 type Query {
   employeeListRead: [EmployeeReadQueryModel!]!
   employeeRead(employeeId: ID): EmployeeReadQueryModel!
-  employeeSalaryRead(employeeId: String!): EmployeeSalaryReadQueryModel!
-  getEmployeeSalaryStructureMetaFields: [CreateSalaryMetaKeyMutationModel!]!
   employeeMetaSalaryRead(employeeId: ID!): [ReadEmployeeSalaryDto!]!
+  getEmployeeSalaryStructureMetaFields: [CreateSalaryMetaKeyMutationModel!]!
+  employeeSalaryRead(employeeId: String!): EmployeeSalaryReadQueryModel!
 }
 
 type Mutation {
   employeeCreate(_id: ID, firstName: String!, lastName: String, email: String!, city: String, ctc: Float!, salary: ID): EmployeeCreateMutationModel!
-  employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
-  CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
   employeeMetaSalaryCreate(_id: ID, employeeId: String!, salary: [CustomEmployeeSalaryType!]!): Boolean!
+  CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
+  employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
   LoginUser(username: String, password: String): UserLoginDto!
   isUserLogin(userId: String!): Boolean!

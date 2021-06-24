@@ -40,7 +40,6 @@ export class AuthResolver {
     @UseGuards(GqlAuthGuard)
     @Mutation(() => Boolean)
     public async isUserLogin(@Args('userId') userId: string) {
-        console.log(userId)
         return await this.authRepositoryService.fineOne(userId).then(data => true);
     }
 

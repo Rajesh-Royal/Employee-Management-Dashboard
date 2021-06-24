@@ -3,7 +3,7 @@ import { EmployeeCreateMutationModel } from "src/app/employee/services/employee-
 
 @ArgsType()
 @ObjectType()
-class SalaryTypeDto {
+export class SalaryTypeDto {
     @Field(() => Number)
     public readonly value: number = undefined;
 

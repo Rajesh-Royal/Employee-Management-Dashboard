@@ -11,7 +11,6 @@ export class ReadEmployeeSalaryQueryService {
 
     public async serve(operation: ReadEmployeeSalaryQueryModel): Promise<EmployeeSalaryFieldsType[]> {
         const result =  await this.employeeSalariesRepositoryService.readEmployeeSalary(operation);
-        console.log(result)
         return result;
     }
 }
