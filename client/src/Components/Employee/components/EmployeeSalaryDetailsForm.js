@@ -53,26 +53,6 @@ const EmployeeSalaryDetailsForm = (props) => {
   // useEffect as callback function of setState
   useEffect(() => {
     setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
-    let value = Object.values(salaryStructure)?.map((salary, index) => {
-      if (salary?.type === "salary") {
-        return (
-          <FormInputBox
-            key={salary?.meta_field_id}
-            id={salary?.meta_field_id}
-            data-salarytype="salary"
-            label={makeWords(salary?.meta_key)}
-            icon="₹"
-            placeholder="$$"
-            name={salary?.meta_key}
-            type="number"
-            ariaLabel={salary?.meta_key}
-            value={salary?.value}
-            onChange={(e) => onSalaryStructureDataChange(e, index)}
-          />
-        );
-      }
-    });
-    console.log(value);
   }, [salaryStructure]);
 
   useEffect(() => {
@@ -118,6 +98,8 @@ const EmployeeSalaryDetailsForm = (props) => {
                       onChange={(e) => onSalaryStructureDataChange(e, index)}
                     />
                   );
+                } else {
+                  return null;
                 }
               })
             : null}
@@ -145,6 +127,8 @@ const EmployeeSalaryDetailsForm = (props) => {
                       onChange={(e) => onSalaryStructureDataChange(e, index)}
                     />
                   );
+                } else {
+                  return null;
                 }
               })
             : null}
