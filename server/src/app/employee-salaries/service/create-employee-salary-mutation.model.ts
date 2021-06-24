@@ -27,7 +27,7 @@ export class EmployeeSalaryCreateMutationModel {
     })
     public readonly _id?: string = undefined;
 
-    @Field(() => String)
+    @Field(() => ID)
     public readonly employeeId: string = undefined;
 
     @Field(() => [CustomEmployeeSalaryType])
