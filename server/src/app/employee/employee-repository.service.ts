@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { EmployeeCreateMutationModel } from './services/employee-create.mutation.model';
 import { EmployeeType } from '../shared/employee.type';
+import { EmployeeCreateMutationModel } from './services/employee-create.mutation.model';
 import { SingleEmployeeReadQueryModel } from './services/employee-read-query.model';
 
 @Injectable()
@@ -21,6 +21,20 @@ export class EmployeeRepositoryService {
         ...(operation.ctc !== undefined && { ctc: operation.ctc }),
         ...(operation.salary !== undefined && { salary: operation.salary }),
       }).save();
+  }
+
+  public async updateEmployeeSalaryId(operation: EmployeeCreateMutationModel) {
+    return await this.EmployeeTypeModel.findOneAndUpdate(
+      {
+        _id: operation._id
+      },
+      {
+        $set: {
+          salary: operation.salary
+        }
+      },
+      {returnOriginal: false}
+    )
   }
 
   public async getAllEmployees(): Promise<EmployeeType[]> {

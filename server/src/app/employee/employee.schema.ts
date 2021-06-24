@@ -8,6 +8,6 @@ export const EmployeeSchema = new mongoose.Schema({
     ctc: Number,
     salary: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'SalaryType'
+        ref: 'EmployeeSalaries'
     }
 }, {timestamps: true});

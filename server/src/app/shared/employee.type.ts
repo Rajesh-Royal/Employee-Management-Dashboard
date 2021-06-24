@@ -8,5 +8,5 @@ export interface EmployeeType extends Document {
   email: string;
   city: string;
   ctc: number;
-  salary?: SalaryType
+  salary?: SalaryType | string
 }

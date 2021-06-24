@@ -1,9 +1,28 @@
 import {
     ArgsType, Field, ID, ObjectType
 } from '@nestjs/graphql';
-import { EmployeeSalaryReadQueryModel } from 'src/app/salary/service/salary-read.query.model';
 import { EmployeeType } from 'src/app/shared/employee.type';
-import { SalaryType } from 'src/app/shared/salary.type';
+import { SalaryTypeDto } from '../../employee-salaries/service/dto/employee-salary.dto';
+
+
+@ArgsType()
+@ObjectType()
+export class EmployeeSalaryTypeDto {
+    @Field(() => ID, {
+        nullable: true
+    })
+    public readonly _id?: string = undefined;
+
+    @Field(() => ID, {
+        nullable: true
+    })
+    public readonly employeeId?: string = undefined;
+
+    @Field(() => [SalaryTypeDto], {
+        nullable: true
+    })
+    public readonly salary: SalaryTypeDto = undefined
+}
 
 @ArgsType()
 @ObjectType()
@@ -39,13 +58,13 @@ export class EmployeeReadQueryModel {
     })
     public readonly ctc: number = undefined;
 
-    @Field(() => EmployeeSalaryReadQueryModel, {
+    @Field(() => EmployeeSalaryTypeDto, {
         nullable: true
     })
-    public readonly salary?: SalaryType = undefined;
+    public readonly salary?: EmployeeSalaryTypeDto = undefined;
 
 
-    constructor(initialValue?: EmployeeType){
+    constructor(initialValue?: EmployeeType | any){
         this._id = initialValue?._id;
         this.firstName = initialValue?.firstName;
         this.lastName = initialValue?.lastName;

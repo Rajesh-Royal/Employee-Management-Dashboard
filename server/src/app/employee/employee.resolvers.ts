@@ -19,7 +19,7 @@ export class EmployeeResolvers {
     ) {
   }
 
-  @UseGuards(GqlAuthGuard)
+  // @UseGuards(GqlAuthGuard)
   @Query(() => [EmployeeReadQueryModel])
   public employeeListRead(): GraphQLResolverResult<EmployeeType[]> {
     return this.employeeListReadQueryService.serve().then(result => result);
