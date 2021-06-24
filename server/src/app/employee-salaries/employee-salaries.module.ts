@@ -5,6 +5,7 @@ import { EmployeeSalariesResolver } from "./employee-salaries.resolver";
 import { EmployeeSalarySchema } from "./employee-salaries.schema";
 import { EmployeeSalaryCreateMutationService } from "./service/create-employee-salary-mutation.service";
 import { ReadEmployeeSalaryQueryService } from "./service/read-employee-salary-query.service";
+import { UpdateEmployeeSalaryMutationService } from "./service/update-employee-salary-mutation.service";
 
 @Module({
     imports: [
@@ -19,6 +20,7 @@ import { ReadEmployeeSalaryQueryService } from "./service/read-employee-salary-q
     providers: [
       EmployeeSalariesRepositoryService,
       EmployeeSalaryCreateMutationService,
+      UpdateEmployeeSalaryMutationService,
       ReadEmployeeSalaryQueryService,
       EmployeeSalariesResolver
     ],

@@ -10,14 +10,14 @@ import { ReadEmployeeSalaryQueryModel } from "./service/read-employee-salary-que
 export class EmployeeSalariesRepositoryService {
     constructor(
         @InjectModel("EmployeeSalaries") private readonly employeeSalariesModel: Model<EmployeeSalaryFieldsType>
-    ){}
+    ) { }
 
-    public createEmployeeSalary(operation: EmployeeSalaryCreateMutationModel){
+    public createEmployeeSalary(operation: EmployeeSalaryCreateMutationModel) {
         // convert to json then parse it to remove null from array.
         // const EmployeeSalaries = JSON.parse(JSON.stringify(operation.salary))
         return this.employeeSalariesModel.updateOne(
             {
-            employeeId: operation.employeeId
+                employeeId: operation.employeeId
             },
             {
                 ...(operation.employeeId !== undefined && { employeeId: operation.employeeId }),
@@ -31,10 +31,10 @@ export class EmployeeSalariesRepositoryService {
 
     // findOne and update
     // insert if not find
-    public findOneAndUpdateSalary(operation: EmployeeSalaryCreateMutationModel){
+    public findOneAndUpdateSalary(operation: EmployeeSalaryCreateMutationModel) {
         return this.employeeSalariesModel.findOneAndUpdate(
             {
-            employeeId: operation.employeeId
+                employeeId: operation.employeeId
             },
             {
                 ...(operation.employeeId !== undefined && { employeeId: operation.employeeId }),
@@ -47,6 +47,19 @@ export class EmployeeSalariesRepositoryService {
             // function (err, documents) {
             //     return ({ error: err, affected: documents });
             // }
+        )
+    }
+
+    // find an employee and updateIts salary
+    public updateEmployeeSalary(operation: EmployeeSalaryCreateMutationModel) {
+        return this.employeeSalariesModel.updateOne(
+            { employeeId: operation.employeeId },
+            {
+                $set:
+                {
+                    salary: operation.salary
+                }
+            }
         )
     }
 
@@ -67,7 +80,7 @@ export class EmployeeSalariesRepositoryService {
         )
     }
 
-    public readEmployeeSalary(operation: ReadEmployeeSalaryQueryModel){
-        return this.employeeSalariesModel.find({employeeId: operation.employeeId}).populate("employeeId").exec();
+    public readEmployeeSalary(operation: ReadEmployeeSalaryQueryModel) {
+        return this.employeeSalariesModel.find({ employeeId: operation.employeeId }).populate("employeeId").exec();
     }
 }
