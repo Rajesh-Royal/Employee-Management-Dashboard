@@ -1,4 +1,6 @@
+import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { GqlAuthGuard } from "../auth/guards/auth.guard";
 import { EmployeeSalaryFieldsType } from "../shared/employee-salary-fields.type";
 import { EmployeeSalaryCreateMutationModel } from "./service/create-employee-salary-mutation.model";
 import { EmployeeSalaryCreateMutationService } from "./service/create-employee-salary-mutation.service";
@@ -15,7 +17,7 @@ export class EmployeeSalariesResolver {
         private updateEmployeeSalaryMutationService: UpdateEmployeeSalaryMutationService,
     ){}
 
-  // @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   public async employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);
@@ -23,7 +25,7 @@ export class EmployeeSalariesResolver {
     return await this.employeeSalariesCreateMutationService.serve(operation).then(data => data);
   }
 
-  // @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
   public async employeeMetaSalaryUpdate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);
