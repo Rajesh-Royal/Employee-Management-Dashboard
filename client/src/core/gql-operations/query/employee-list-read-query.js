@@ -10,13 +10,14 @@ export const EMPLOYEE_LIST_READ = gql`
       city
       ctc
       salary {
+        employeeId
         _id
-        da
-        pa
-        hra
-        pt
-        epf
-        basic
+        salary {
+          value
+          meta_key
+          meta_field_id
+          type
+        }
       }
     }
   }

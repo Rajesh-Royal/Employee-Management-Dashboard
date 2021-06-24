@@ -40,7 +40,7 @@ const AddNewSalaryFieldsElement = () => {
               setSalaryFields({
                 ...salaryFields,
                 [e.target.name]: e.target.value,
-                salary_meta_key: e.target.value.replace(" ", "_"),
+                salary_meta_key: e.target.value.split(" ").join("_"),
               });
             }}
           />

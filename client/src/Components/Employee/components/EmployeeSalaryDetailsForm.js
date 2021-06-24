@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { XCircle } from "react-feather";
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMutation } from "@apollo/client";
+import React, { useEffect, useState } from "react";
+import { XCircle } from "react-feather";
 import { toast } from "react-toastify";
-
-import FormInputBox from "../../common/FormInputBox";
-import { SectionHeadingSmall, SectionHeading } from "../../common/Typography";
-import Button from "../../common/Button";
 import { EMPLOYEE_SALARY_UPDATE } from "../../../core/gql-operations/mutation/update-employee-salary.mutation";
-import { reduceSingleLevelObject } from "../../../utility/UtilityFunctions";
 import { projectTheme } from "../../../Data/projectTheme";
+import { makeWords, reduceSingleLevelObject } from "../../../utility/UtilityFunctions";
+import Button from "../../common/Button";
+import FormInputBox from "../../common/FormInputBox";
+import { SectionHeading, SectionHeadingSmall } from "../../common/Typography";
 
 const EmployeeSalaryDetailsForm = (props) => {
-  const salarydata = props?.employeeSalary?.salary;
+  if (!props?.employeeSalary?.salary?.salary) {
+    console.log(props?.employeeSalary);
+    return null;
+  }
+
+  const salarydata = props?.employeeSalary?.salary?.salary;
   const salaryPerMonth = parseInt(props?.employeeSalary?.ctc / 12);
 
   const [employeeSalaryUpdateMutation] = useMutation(EMPLOYEE_SALARY_UPDATE);
@@ -24,22 +29,7 @@ const EmployeeSalaryDetailsForm = (props) => {
     if (salarydata) {
       setSalaryStructure({
         ...salaryStructure,
-        basic: salarydata?.basic,
-        da: salarydata?.da,
-        pa: salarydata?.pa,
-        hra: salarydata?.hra,
-        pt: salarydata?.pt,
-        epf: salarydata?.epf,
-      });
-    } else {
-      setSalaryStructure({
-        ...salaryStructure,
-        basic: 0,
-        da: 0,
-        pa: 0,
-        hra: 0,
-        pt: 0,
-        epf: 0,
+        ...salarydata,
       });
     }
 
@@ -49,18 +39,22 @@ const EmployeeSalaryDetailsForm = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [salarydata]);
+  // console.log(salaryStructure);
 
   //   update state on Input change
-  const onSalaryStructureDataChange = (e) => {
-    setSalaryStructure({
-      ...salaryStructure,
-      [e.target.name]: parseInt(e.target.value) || 0,
+  const onSalaryStructureDataChange = (e, index) => {
+    setSalaryStructure((prevState) => {
+      return {
+        ...prevState,
+        [index]: { ...prevState[index], value: parseInt(e.target.value) || 0 },
+      };
     });
   };
   // set net calculated salary logic on salarystructure change
   // useEffect as callback function of setState
   useEffect(() => {
     setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
+    console.log(salaryStructure);
   }, [salaryStructure]);
 
   useEffect(() => {
@@ -88,72 +82,50 @@ const EmployeeSalaryDetailsForm = (props) => {
           <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
             Salary
           </SectionHeadingSmall>
-          <FormInputBox
-            label="Basic Pay"
-            icon="₹"
-            placeholder="$$"
-            name="basic"
-            type="number"
-            ariaLabel="Basic Pay"
-            value={salaryStructure?.basic}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
-          <FormInputBox
-            label="Dearness Allowance"
-            icon="₹"
-            placeholder="$$"
-            name="da"
-            type="number"
-            ariaLabel="Dearness Allowance"
-            value={salaryStructure?.da}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
-          <FormInputBox
-            label="Personal Allowance"
-            icon="₹"
-            placeholder="$$"
-            name="pa"
-            type="number"
-            ariaLabel="Personal Allowance"
-            value={salaryStructure?.pa}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
-          <FormInputBox
-            label="House Rent Allowance"
-            icon="₹"
-            placeholder="$$"
-            name="hra"
-            type="number"
-            ariaLabel="House Rent Allowance"
-            value={salaryStructure?.hra}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
+          {Object.values(salaryStructure)?.map((salary, index) => {
+            if (salary?.type === "salary") {
+              return (
+                <FormInputBox
+                  key={salary?.meta_field_id}
+                  id={salary?.meta_field_id}
+                  data-salarytype="salary"
+                  label={makeWords(salary?.meta_key)}
+                  icon="₹"
+                  placeholder="$$"
+                  name={salary?.meta_key}
+                  type="number"
+                  ariaLabel={salary?.meta_key}
+                  value={salary?.value}
+                  onChange={(e) => onSalaryStructureDataChange(e, index)}
+                />
+              );
+            }
+          })}
         </div>
         {/* employee Deduction Section */}
         <div className="deduction w-full md:w-1/3 mt-8 md:mt-0">
           <SectionHeadingSmall className={`${projectTheme.textColor} border-b`}>
             Deductions
           </SectionHeadingSmall>
-          <FormInputBox
-            label="Professional Tax"
-            ariaLabel="Professional Tax"
-            icon="₹"
-            placeholder="$$"
-            name="pt"
-            type="number"
-            value={salaryStructure?.pt}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
-          <FormInputBox
-            label="Employee Provident Fund"
-            ariaLabel="Employee Provident Fund"
-            icon="₹"
-            placeholder="$$"
-            name="epf"
-            type="number"
-            value={salaryStructure?.epf}
-            onChange={(e) => onSalaryStructureDataChange(e)}
-          />
+          {Object.values(salaryStructure)?.map((salary, index) => {
+            if (salary?.type === "deduction") {
+              return (
+                <FormInputBox
+                  key={salary?.meta_field_id}
+                  id={salary?.meta_field_id}
+                  data-salarytype="deduction"
+                  label={makeWords(salary?.meta_key)}
+                  icon="₹"
+                  placeholder="$$"
+                  name={salary?.meta_key}
+                  type="number"
+                  ariaLabel={salary?.meta_key}
+                  value={salary?.value}
+                  onChange={(e) => onSalaryStructureDataChange(e, index)}
+                />
+              );
+            }
+          })}
         </div>
       </div>
       <div className="flex justify-between items-center mt-3">
