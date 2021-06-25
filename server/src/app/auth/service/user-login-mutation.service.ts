@@ -1,4 +1,4 @@
-import { Injectable, Logger, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { AuthModuleType } from "src/app/shared/authModule.type";
@@ -38,7 +38,7 @@ export class UserLoginMutationService {
                 token: accessToken,
             });
         }else{
-            throw new UnauthorizedException('Invalid Credentials');
+            throw new BadRequestException("Credentials Not valid")
         }
     }
 }

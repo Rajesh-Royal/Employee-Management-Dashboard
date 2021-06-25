@@ -54,7 +54,7 @@ const AddNewSalaryFieldsElement = () => {
                 }
                 createEmployeeSalaryStructure({
                   variables: salaryFields,
-                  refetchQueries: ["getEmployeeSalaryStructureMetaFields"],
+                  refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
                 })
                   .then((data) => {
                     console.log(data);
@@ -97,7 +97,7 @@ const AddNewSalaryFieldsElement = () => {
                 }
                 createEmployeeSalaryStructure({
                   variables: deductionFields,
-                  refetchQueries: ["getEmployeeSalaryStructureMetaFields"],
+                  refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
                 })
                   .then((data) => {
                     toast.success(`☑ New Field ${deductionFields.field_name} added`);
