@@ -145,6 +145,7 @@ const EmployeeSalaryDetailsForm = (props) => {
         <Button
           disabled={salaryMaxError}
           onClick={() => {
+            setRequestLoading(true);
             employeeSalaryUpdateMutation({
               variables: {
                 employeeId: props?.employeeSalary?._id,
@@ -153,12 +154,10 @@ const EmployeeSalaryDetailsForm = (props) => {
               refetchQueries: ["employeeListRead"],
               // eslint-disable-next-line prettier/prettier
             }).then((res) => {
-                setRequestLoading(true);
+                setRequestLoading(false);
                 if (res.data?.employeeMetaSalaryUpdate) {
-                  setRequestLoading(false);
                   toast.success("Salary Updated successfully");
                 } else {
-                  setRequestLoading(false);
                   toast.info("Salary already exist");
                 }
                 // eslint-disable-next-line prettier/prettier
