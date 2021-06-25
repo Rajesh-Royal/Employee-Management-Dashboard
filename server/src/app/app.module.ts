@@ -4,11 +4,12 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleDatabaseResetService } from './core/services/schedule-database-reset.service';
 import { EmployeeSalariesModule } from './employee-salaries/employee-salaries.module';
 import { EmployeeModule } from './employee/employee.module';
 import { SalaryModule } from './salary/salary.module';
-const productionMongoURI = "mongodb+srv://rajesh:<pwd>@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const localMongoURI = "mongodb://localhost:27017/employeeManagement";
+export const productionMongoURI = "mongodb+srv://rajesh:<pwd>@cluster0.iwlez.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+export const localMongoURI = "mongodb://localhost:27017/employeeManagement";
 @Module({
   imports: [
     GraphQLModule.forRoot({
@@ -27,7 +28,8 @@ const localMongoURI = "mongodb://localhost:27017/employeeManagement";
     EmployeeModule,
     SalaryModule,
     EmployeeSalariesModule,
-    AuthModule
+    AuthModule,
+    ScheduleDatabaseResetService
   ],
 
 })
