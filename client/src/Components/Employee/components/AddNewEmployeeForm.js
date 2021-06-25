@@ -1,14 +1,13 @@
+import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import { DollarSign, Mail, Map, User, XCircle } from "react-feather";
-import { useMutation } from "@apollo/client";
 import { toast } from "react-toastify";
-
+import { ADD_NEW_EMPLOYEE } from "../../../core/gql-operations/mutation/add-new-employee.mutation";
+import { projectTheme } from "../../../Data/projectTheme";
+import { validateEmail } from "../../../utility/UtilityFunctions";
 import Button from "../../common/Button";
 import FormInputBox from "../../common/FormInputBox";
 import { SectionHeading } from "../../common/Typography";
-import { ADD_NEW_EMPLOYEE } from "../../../core/gql-operations/mutation/add-new-employee.mutation";
-import { validateEmail } from "../../../utility/UtilityFunctions";
-import { projectTheme } from "../../../Data/projectTheme";
 
 const AddNewEmployeeForm = ({
   employeeProfileData,
@@ -21,7 +20,7 @@ const AddNewEmployeeForm = ({
   return (
     <form
       onClick={(e) => e.preventDefault()}
-      className="shadow-md border border-gray-100 p-6 bg-gray-50 dark:bg-gray-600 dark:border-gray-600 max-w-3xl relative">
+      className="shadow-md border border-gray-100 p-6 bg-gray-50 dark:bg-gray-600 dark:border-gray-600 max-w-3xl relative overflow-hidden">
       <button
         className="absolute right-2 -mt-12 focus:outline-none"
         onClick={() => {

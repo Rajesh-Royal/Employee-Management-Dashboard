@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import Footer from "../Components/common/Footer";
 import Header from "../Components/common/Header";
 import { ProtectedRoute } from "../Components/common/ProtectedRoute";
 import GlobalErrorBoundary from "../Components/global/GlobalErrorBoundary";
@@ -47,6 +48,9 @@ function Layout(props) {
           </Switch>
         </Suspense>
       </GlobalErrorBoundary>
+      {location.pathname !== "/auth/login" && location.pathname !== "/auth/signup" ? (
+        <Footer />
+      ) : null}
     </React.Fragment>
   );
 }

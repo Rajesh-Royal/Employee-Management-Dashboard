@@ -39,7 +39,7 @@ const CreateEmployeeSalaryStructure = () => {
           <form
             onClick={(e) => e.preventDefault()}
             className="shadow-md border border-gray-100 p-6 bg-gray-50 dark:bg-gray-600 dark:border-gray-600
-          max-w-5xl relative">
+          max-w-5xl relative overflow-hidden">
             <button
               className="absolute right-2 -mt-12 focus:outline-none"
               onClick={() => closeSalaryStructureModal()}>
