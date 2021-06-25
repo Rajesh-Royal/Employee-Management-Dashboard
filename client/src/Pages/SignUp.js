@@ -105,9 +105,22 @@ const SignUp = () => {
                             return data;
                           })
                           .catch((error) => {
-                            toast.error(
-                              `${error.message}. Data validation failed, please check your input data`
-                            );
+                            if (
+                              error?.graphQLErrors[0]?.extensions?.exception?.response?.message
+                                ?.length > 0
+                            ) {
+                              error?.graphQLErrors[0]?.extensions?.exception?.response?.message?.forEach(
+                                (message) => {
+                                  toast.error(message, { autoClose: 7000 });
+                                }
+                              );
+                            } else {
+                              toast.error(
+                                `${error.message}. Data validation failed, please check your input data`,
+                                { autoClose: 7000 }
+                              );
+                            }
+
                             return error;
                           });
                       }}>
