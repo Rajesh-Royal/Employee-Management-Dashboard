@@ -1,6 +1,7 @@
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GqlAuthGuard } from "../auth/guards/auth.guard";
+import { GraphQLResolverResult } from "../employee/employee.resolvers";
 import { EmployeeSalaryFieldsType } from "../shared/employee-salary-fields.type";
 import { EmployeeSalaryCreateMutationModel } from "./service/create-employee-salary-mutation.model";
 import { EmployeeSalaryCreateMutationService } from "./service/create-employee-salary-mutation.service";
@@ -19,25 +20,25 @@ export class EmployeeSalariesResolver {
 
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
-  public async employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
+  public employeeMetaSalaryCreate(@Args() arguments_: EmployeeSalaryCreateMutationModel): GraphQLResolverResult<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);
 
-    return await this.employeeSalariesCreateMutationService.serve(operation).then(data => data);
+    return this.employeeSalariesCreateMutationService.serve(operation).then(data => data);
   }
 
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Boolean)
-  public async employeeMetaSalaryUpdate(@Args() arguments_: EmployeeSalaryCreateMutationModel): Promise<boolean> {
+  public employeeMetaSalaryUpdate(@Args() arguments_: EmployeeSalaryCreateMutationModel): GraphQLResolverResult<boolean> {
     const operation = new EmployeeSalaryCreateMutationModel(arguments_);
 
-    return await this.updateEmployeeSalaryMutationService.serve(operation).then(data => data);
+    return this.updateEmployeeSalaryMutationService.serve(operation).then(data => data);
   }
 
   // @UseGuards(GqlAuthGuard)
   @Query(() => [ReadEmployeeSalaryDto])
-  public async employeeMetaSalaryRead(@Args() arguments_: ReadEmployeeSalaryQueryModel): Promise<EmployeeSalaryFieldsType[]> {
+  public employeeMetaSalaryRead(@Args() arguments_: ReadEmployeeSalaryQueryModel): GraphQLResolverResult<EmployeeSalaryFieldsType[]> {
     const operation = new ReadEmployeeSalaryQueryModel(arguments_);
 
-    return await this.readEmployeeSalaryQueryService.serve(operation).then(data => data);
+    return this.readEmployeeSalaryQueryService.serve(operation).then(data => data);
   }
 }

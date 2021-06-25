@@ -1,6 +1,7 @@
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GqlAuthGuard } from "../auth/guards/auth.guard";
+import { GraphQLResolverResult } from "../employee/employee.resolvers";
 import { SalaryType } from "../shared/salary.type";
 import { EmployeeSalaryReadQueryModel } from "./service/salary-read.query.model";
 import { EmployeeSalaryReadQueryService } from "./service/salary-read.query.service";
@@ -33,5 +34,3 @@ export class SalaryResolvers {
     return this.employeeSalaryUpdateMutationService.serve(operation).then(data => data);
   }
 }
-
-export type GraphQLResolverResult<T> = null | undefined | any[] | Promise<T> | string | number | {};
