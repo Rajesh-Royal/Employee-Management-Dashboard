@@ -53,11 +53,15 @@ const EmployeeSalaryDetailsForm = (props) => {
   // set net calculated salary logic on salarystructure change
   // useEffect as callback function of setState
   useEffect(() => {
-    setNetCalculatedSalary(reduceSingleLevelObject(salaryStructure));
+    // filter salary and decution type and then perform particular operation
+    const salary = Object.values(salaryStructure).filter((item) => item.type === "salary");
+    const deduction = Object.values(salaryStructure).filter((item) => item.type === "deduction");
+    setNetCalculatedSalary(reduceSingleLevelObject(salary) - reduceSingleLevelObject(deduction));
   }, [salaryStructure]);
 
   useEffect(() => {
     netCalculatedSalary > salaryPerMonth ? setSalaryMaxError(true) : setSalaryMaxError(false);
+    netCalculatedSalary < 0 ? setSalaryMaxError(true) : setSalaryMaxError(false);
   }, [netCalculatedSalary, salaryPerMonth]);
 
   return (
