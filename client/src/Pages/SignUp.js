@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../Components/common/Button";
@@ -8,6 +9,7 @@ import { USER_SIGNUP } from "../core/gql-operations/mutation/user-signup-mutatio
 
 const SignUp = () => {
   const [signupUser] = useMutation(USER_SIGNUP);
+  const [requestLoading, setRequestLoading] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     username: "",
     password: "",
@@ -31,6 +33,9 @@ const SignUp = () => {
   const history = useHistory();
   return (
     <div className={"w-screen h-screen overflow-hidden bg-gray-700"}>
+      <Helmet>
+        <title>Signup - Employee Dashboard</title>
+      </Helmet>
       <div className="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
         <div
           className="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0"
@@ -96,11 +101,13 @@ const SignUp = () => {
                     <Button
                       onClick={(e) => {
                         e.preventDefault();
+                        setRequestLoading(true);
                         signupUser({
                           variables: userCredentials,
                         })
                           .then((data) => {
                             toast.success(`Registered new user ${userCredentials?.username}`);
+                            setRequestLoading(false);
                             history.push("/auth/login");
                             return data;
                           })
@@ -114,16 +121,19 @@ const SignUp = () => {
                                   toast.error(message, { autoClose: 7000 });
                                 }
                               );
+                              setRequestLoading(false);
                             } else {
                               toast.error(
                                 `${error.message}. Data validation failed, please check your input data`,
                                 { autoClose: 7000 }
                               );
+                              setRequestLoading(false);
                             }
 
                             return error;
                           });
-                      }}>
+                      }}
+                      isLoading={requestLoading}>
                       Signup
                     </Button>
                   </div>

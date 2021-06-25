@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { DollarSign, Mail, Map, User, XCircle } from "react-feather";
 import { useMutation } from "@apollo/client";
 import { toast } from "react-toastify";
@@ -16,6 +16,7 @@ const AddNewEmployeeForm = ({
   closeAddEmployeeModal,
 }) => {
   const [addNewEmployee] = useMutation(ADD_NEW_EMPLOYEE);
+  const [requestLoading, setRequestLoading] = useState(false);
 
   return (
     <form
@@ -94,12 +95,16 @@ const AddNewEmployeeForm = ({
           <Button
             className=" w-full"
             onClick={() => {
+              setRequestLoading(true);
+
               if (!validateEmail(employeeProfileData?.email)) {
                 toast.error("Email not valid");
+                setRequestLoading(false);
                 return 0;
               }
               if (employeeProfileData?.ctc === "") {
                 toast.error("CTC cannot be null");
+                setRequestLoading(false);
                 return 0;
               }
               addNewEmployee({
@@ -107,14 +112,17 @@ const AddNewEmployeeForm = ({
                 refetchQueries: ["employeeListRead"],
               })
                 .then((res) => {
+                  setRequestLoading(false);
                   if (res?.data?.employeeCreate?._id) {
                     toast.success("New Employee Added");
                   }
                 })
                 .catch((error) => {
+                  setRequestLoading(false);
                   toast.error(error?.message);
                 });
-            }}>
+            }}
+            isLoading={requestLoading}>
             Save
           </Button>
         </div>

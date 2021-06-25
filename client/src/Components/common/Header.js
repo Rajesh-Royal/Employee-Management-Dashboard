@@ -28,6 +28,7 @@ const Header = () => {
                 console.log(error?.message);
               }
             }}
+            className="cursor-pointer"
           />
         </div>
       </header>

@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../Components/common/Button";
@@ -12,6 +13,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const [requestLoading, setRequestLoading] = useState(false);
   const onInputChange = (e) => {
     setUserCredentials({
       ...userCredentials,
@@ -21,6 +23,9 @@ const Login = () => {
   const history = useHistory();
   return (
     <div className={"w-screen h-screen overflow-hidden bg-gray-700"}>
+      <Helmet>
+        <title>Login - Employee Dashboard</title>
+      </Helmet>
       <div className="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
         <div
           className="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0"
@@ -71,18 +76,22 @@ const Login = () => {
                     <Button
                       onClick={(e) => {
                         e.preventDefault();
+                        setRequestLoading(true);
                         loginUser({
                           variables: userCredentials,
                         })
                           .then((data) => {
                             localStorage.setItem("employeeToken", data?.data?.LoginUser?.token);
                             toast.success(`User ${userCredentials?.username}  Logged In`);
+                            setRequestLoading(false);
                             history.push("/dashboard");
                           })
                           .catch((error) => {
+                            setRequestLoading(false);
                             toast.error(error.message);
                           });
-                      }}>
+                      }}
+                      isLoading={requestLoading}>
                       Login
                     </Button>
                   </div>

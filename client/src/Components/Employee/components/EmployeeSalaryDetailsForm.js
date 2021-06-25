@@ -23,6 +23,7 @@ const EmployeeSalaryDetailsForm = (props) => {
   const [salaryStructure, setSalaryStructure] = useState({});
   const [netCalculatedSalary, setNetCalculatedSalary] = useState(0);
   const [salaryMaxError, setSalaryMaxError] = useState(false);
+  const [requestLoading, setRequestLoading] = useState(false);
 
   useEffect(() => {
     if (salarydata) {
@@ -152,14 +153,21 @@ const EmployeeSalaryDetailsForm = (props) => {
               refetchQueries: ["employeeListRead"],
               // eslint-disable-next-line prettier/prettier
             }).then((res) => {
+                setRequestLoading(true);
                 if (res.data?.employeeMetaSalaryUpdate) {
+                  setRequestLoading(false);
                   toast.success("Salary Updated successfully");
                 } else {
+                  setRequestLoading(false);
                   toast.info("Salary already exist");
                 }
                 // eslint-disable-next-line prettier/prettier
-              }).catch((error) => toast.error(error?.message));
-          }}>
+              }).catch((error) => {
+                setRequestLoading(false);
+                toast.error(error?.message);
+              });
+          }}
+          isLoading={requestLoading}>
           Save
         </Button>
       </div>

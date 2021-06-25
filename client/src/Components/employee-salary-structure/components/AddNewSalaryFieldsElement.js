@@ -21,6 +21,9 @@ const AddNewSalaryFieldsElement = () => {
     type: "deduction",
     disabled: false,
   });
+  const [salaryRequestLoading, setSalaryRequestLoading] = useState(false);
+  const [deductionRequestLoading, setDeductionRequestLoading] = useState(false);
+
   return (
     <React.Fragment>
       <SectionHeading className="pt-3 border-b mt-6">Add New Salary Fields</SectionHeading>
@@ -48,8 +51,10 @@ const AddNewSalaryFieldsElement = () => {
             <Button
               className=" w-full"
               onClick={() => {
+                setSalaryRequestLoading(true);
                 if (salaryFields.field_name === "" || salaryFields.field_name === null) {
                   toast.error("Please enter a value first");
+                  setSalaryRequestLoading(false);
                   return;
                 }
                 createEmployeeSalaryStructure({
@@ -59,11 +64,14 @@ const AddNewSalaryFieldsElement = () => {
                   .then((data) => {
                     console.log(data);
                     toast.success(`☑ New Field ${salaryFields.field_name} added`);
+                    setSalaryRequestLoading(false);
                   })
                   .catch((error) => {
                     toast.error(error?.message?.split(" ").slice(4).join(" ") || "Error");
+                    setSalaryRequestLoading(false);
                   });
-              }}>
+              }}
+              isLoading={salaryRequestLoading}>
               Save
             </Button>
           </div>
@@ -91,8 +99,10 @@ const AddNewSalaryFieldsElement = () => {
             <Button
               className=" w-full"
               onClick={() => {
+                setDeductionRequestLoading(true);
                 if (deductionFields.field_name === "" || deductionFields.field_name === null) {
                   toast.error("Please enter a value first");
+                  setDeductionRequestLoading(false);
                   return;
                 }
                 createEmployeeSalaryStructure({
@@ -101,11 +111,14 @@ const AddNewSalaryFieldsElement = () => {
                 })
                   .then((data) => {
                     toast.success(`☑ New Field ${deductionFields.field_name} added`);
+                    setDeductionRequestLoading(false);
                   })
                   .catch((error) => {
                     toast.error(error?.message?.split(" ").slice(4).join(" ") || "Error");
+                    setDeductionRequestLoading(false);
                   });
-              }}>
+              }}
+              isLoading={deductionRequestLoading}>
               Save
             </Button>
           </div>
