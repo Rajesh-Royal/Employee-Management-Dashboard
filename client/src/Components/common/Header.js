@@ -1,5 +1,5 @@
 import React from "react";
-import { GitHub } from "react-feather";
+import { GitHub, LogOut } from "react-feather";
 import { Link } from "react-router-dom";
 import Container from "../../Container/Container";
 import { projectData } from "../../Data/data";
@@ -18,6 +18,17 @@ const Header = () => {
             <GitHub />
           </a>
           <DarkModeToggle />
+          <LogOut
+            onClick={(e) => {
+              e.preventDefault();
+              try {
+                localStorage.removeItem("employeeToken");
+                window.location.href = "/auth/login";
+              } catch (error) {
+                console.log(error?.message);
+              }
+            }}
+          />
         </div>
       </header>
     </Container>

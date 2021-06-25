@@ -9,7 +9,7 @@ import { adminRoutes, userRoutes } from "../Routes/Routes";
 
 const Page404 = lazy(() => import("../Pages/404"));
 
-function Layout() {
+function Layout(props) {
   let location = useLocation();
   return (
     <React.Fragment>

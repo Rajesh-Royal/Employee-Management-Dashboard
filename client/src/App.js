@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Layout from "./Container/Layout";
 
 function App(props) {
@@ -10,7 +9,7 @@ function App(props) {
       <HelmetProvider>
         <Router>
           <Switch>
-            <Layout />
+            <Layout props={props} />
           </Switch>
         </Router>
       </HelmetProvider>

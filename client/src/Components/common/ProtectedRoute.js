@@ -23,7 +23,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         setUserLoggedIn(false);
         setLoading(true);
       });
-  }, []);
+  }, [isUserLoggedIn]);
 
   return !loading ? (
     <Route
