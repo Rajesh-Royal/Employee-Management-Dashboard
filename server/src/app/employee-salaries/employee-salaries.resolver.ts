@@ -1,8 +1,8 @@
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GqlAuthGuard } from "../auth/guards/auth.guard";
-import { GraphQLResolverResult } from "../employee/employee.resolvers";
 import { EmployeeSalaryFieldsType } from "../shared/employee-salary-fields.type";
+import { GraphQLResolverResult } from "../shared/graphQL-Resolver-Result.type";
 import { EmployeeSalaryCreateMutationModel } from "./service/create-employee-salary-mutation.model";
 import { EmployeeSalaryCreateMutationService } from "./service/create-employee-salary-mutation.service";
 import { ReadEmployeeSalaryDto } from "./service/dto/employee-salary.dto";

@@ -1,7 +1,7 @@
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { GqlAuthGuard } from "../auth/guards/auth.guard";
-import { GraphQLResolverResult } from "../employee/employee.resolvers";
+import { GraphQLResolverResult } from "../shared/graphQL-Resolver-Result.type";
 import { SalaryType } from "../shared/salary.type";
 import { EmployeeSalaryReadQueryModel } from "./service/salary-read.query.model";
 import { EmployeeSalaryReadQueryService } from "./service/salary-read.query.service";
