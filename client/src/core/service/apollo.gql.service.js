@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 import { toast } from "react-toastify";
 import { projectData } from "../../Data/data";
 
-const link = projectData.graphqlServerLive;
+const link = projectData.graphqlServerLocal;
 const httpLink = createHttpLink({
   uri: link,
   fetch,

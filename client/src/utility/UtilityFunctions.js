@@ -1,26 +1,26 @@
 export const reduceSingleLevelObject = (values) => {
-  if (Object.values(values)?.length) {
-    return Object.values(values).reduce((acc, next, index) => {
-      if (index === 1) {
-        return acc.value + next.value;
-      } else {
-        return acc + next.value;
-      }
-    });
-  } else {
-    return null;
-  }
-
-  // with foreach
   // if (Object.values(values)?.length) {
-  //   let sum = Object.values(values).map((item) => {
-  //     console.log(item.meta_key, "====", item.value);
-  //     return item.value;
+  //   return Object.values(values).reduce((acc, next, index) => {
+  //     if (index === 1) {
+  //       return acc.value + next.value;
+  //     } else {
+  //       return acc + next.value;
+  //     }
   //   });
-  //   return sum.reduce((acc, next) => acc + next);
   // } else {
   //   return null;
   // }
+
+  // with foreach
+  if (Object.values(values)?.length) {
+    let sum = Object.values(values).map((item) => {
+      console.log(item.meta_key, "====", item.value);
+      return item.value;
+    });
+    return sum.reduce((acc, next) => acc + next);
+  } else {
+    return 0;
+  }
 };
 
 export const validateEmail = (email) => {
