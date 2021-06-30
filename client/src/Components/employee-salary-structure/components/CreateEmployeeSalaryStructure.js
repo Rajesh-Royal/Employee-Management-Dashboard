@@ -1,7 +1,8 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { DollarSign, XCircle } from "react-feather";
 import Modal from "react-modal";
+import { REMOVE_EMPLOYEE_SALARY_STRUCTURE } from "../../../core/gql-operations/mutation/remove-employee-salary-structure.mutation";
 import { READ_EMPLOYEE_SALARY_STRUCTURE } from "../../../core/gql-operations/query/read-employee-salary-structure-query";
 import { projectTheme } from "../../../Data/projectTheme";
 import { modalStyle } from "../../../utility/ModalStyle";
@@ -15,8 +16,18 @@ const CreateEmployeeSalaryStructure = () => {
   const { data: EmployeeSalaryStructureData, loading: SalaryStructureLoading } = useQuery(
     READ_EMPLOYEE_SALARY_STRUCTURE
   );
+  const [removeEmployeeSalaryStructure] = useMutation(REMOVE_EMPLOYEE_SALARY_STRUCTURE);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  // remove salaryField
+  const removeSalary = (fieldId) => {
+    removeEmployeeSalaryStructure({
+      variables: {
+        fieldId: fieldId,
+      },
+      refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
+    });
+  };
   // closeModal
   const closeSalaryStructureModal = () => setModalIsOpen(false);
   return (
@@ -57,17 +68,24 @@ const CreateEmployeeSalaryStructure = () => {
                     ? EmployeeSalaryStructureData?.getEmployeeSalaryStructureMetaFields?.map(
                         (salaryField) => {
                           return salaryField?.type === "salary" ? (
-                            <FormInputBox
-                              key={salaryField?._id}
-                              label={capitalize(salaryField?.field_name)}
-                              icon={<DollarSign />}
-                              placeholder={capitalize(salaryField?.field_name)}
-                              name={capitalize(salaryField?.field_name)}
-                              type={salaryField?.type.toLowerCase()}
-                              ariaLabel={capitalize(salaryField?.field_name)}
-                              value={salaryField?.field_name}
-                              onChange={(e) => {}}
-                            />
+                            <div className="relative max-w-xs">
+                              <XCircle
+                                className={`w-4 h-4 absolute -right-3 top-12 focus:outline-none cursor-pointer ${projectTheme.closeXButtonColor}`}
+                                aria-hidden="true"
+                                onClick={() => removeSalary(salaryField?._id)}
+                              />
+                              <FormInputBox
+                                key={salaryField?._id}
+                                label={capitalize(salaryField?.field_name)}
+                                icon={<DollarSign />}
+                                placeholder={capitalize(salaryField?.field_name)}
+                                name={capitalize(salaryField?.field_name)}
+                                type={salaryField?.type.toLowerCase()}
+                                ariaLabel={capitalize(salaryField?.field_name)}
+                                value={salaryField?.field_name}
+                                onChange={(e) => {}}
+                              />
+                            </div>
                           ) : null;
                         }
                       )
@@ -81,17 +99,24 @@ const CreateEmployeeSalaryStructure = () => {
                     ? EmployeeSalaryStructureData?.getEmployeeSalaryStructureMetaFields?.map(
                         (salaryField) => {
                           return salaryField?.type === "deduction" ? (
-                            <FormInputBox
-                              key={salaryField?._id}
-                              label={capitalize(salaryField?.field_name)}
-                              icon={<DollarSign />}
-                              placeholder={capitalize(salaryField?.field_name)}
-                              name={capitalize(salaryField?.field_name)}
-                              type={salaryField?.type.toLowerCase()}
-                              ariaLabel={capitalize(salaryField?.field_name)}
-                              value={salaryField?.field_name}
-                              onChange={(e) => {}}
-                            />
+                            <div className="relative max-w-xs">
+                              <XCircle
+                                className={`w-4 h-4 absolute -right-3 top-12 focus:outline-none cursor-pointer ${projectTheme.closeXButtonColor}`}
+                                aria-hidden="true"
+                                onClick={() => removeSalary(salaryField?._id)}
+                              />
+                              <FormInputBox
+                                key={salaryField?._id}
+                                label={capitalize(salaryField?.field_name)}
+                                icon={<DollarSign />}
+                                placeholder={capitalize(salaryField?.field_name)}
+                                name={capitalize(salaryField?.field_name)}
+                                type={salaryField?.type.toLowerCase()}
+                                ariaLabel={capitalize(salaryField?.field_name)}
+                                value={salaryField?.field_name}
+                                onChange={(e) => {}}
+                              />
+                            </div>
                           ) : null;
                         }
                       )
