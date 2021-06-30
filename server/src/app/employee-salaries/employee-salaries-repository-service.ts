@@ -80,6 +80,19 @@ export class EmployeeSalariesRepositoryService {
         )
     }
 
+    // remove salary value from array for all the employees
+    public removeEmployeeSalary(salaryId: string){
+        return this.employeeSalariesModel.updateMany(
+            {
+                $pull: {
+                    salary: {
+                        meta_field_id: salaryId
+                    }
+                }
+            }
+        )
+    }
+
     public readEmployeeSalary(operation: ReadEmployeeSalaryQueryModel) {
         return this.employeeSalariesModel.find({ employeeId: operation.employeeId }).populate("employeeId").exec();
     }

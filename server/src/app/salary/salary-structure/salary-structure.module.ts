@@ -6,6 +6,7 @@ import { SalaryStructureResolver } from './salary-structure.resolver';
 import { SalaryStructureSchema } from './salary-structure.schema';
 import { CreateSalaryMetaKeyMutationService } from './service/create-salary-structure-mutation.service';
 import { ReadSalaryMetaKeysQueryService } from './service/create-salary-structure-query.service';
+import { DeleteSalaryStructureMutationService } from './service/delete-salary-structure-mutation-service';
 
 
 
@@ -24,7 +25,8 @@ import { ReadSalaryMetaKeysQueryService } from './service/create-salary-structur
       SalaryStructureResolver,
       SalaryStructureRepositoryService,
       CreateSalaryMetaKeyMutationService,
-      ReadSalaryMetaKeysQueryService
+      ReadSalaryMetaKeysQueryService,
+      DeleteSalaryStructureMutationService
   ],
   exports: [
     MongooseModule,

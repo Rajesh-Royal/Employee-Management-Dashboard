@@ -102,6 +102,7 @@ type Mutation {
   employeeMetaSalaryCreate(_id: ID, employeeId: ID!, salary: [CustomEmployeeSalaryType!]!): Boolean!
   employeeMetaSalaryUpdate(_id: ID, employeeId: ID!, salary: [CustomEmployeeSalaryType!]!): Boolean!
   CreateEmployeeSalaryStructureMetaField(_id: ID, salary_meta_key: String!, field_name: String!, type: String!, disabled: Boolean!): CreateSalaryMetaKeyMutationModel!
+  DeleteEmployeeSalaryStructureMetaField(fieldId: ID!): Boolean!
   employeeSalaryUpdate(_id: ID, employeeId: ID, da: Float, basic: Float, pa: Float, hra: Float, pt: Float, epf: Float): Boolean!
   RegisterUser(username: String!, password: String!, email: String!, mobile: Float!, salt: String): UserRegisterDto!
   LoginUser(username: String, password: String): UserLoginDto!
