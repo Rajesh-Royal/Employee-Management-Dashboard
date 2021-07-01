@@ -14,16 +14,24 @@ export class CreateSalaryMetaKeyMutationModel {
     })
     public readonly _id?: string = undefined;
 
-    @Field(() => String)
+    @Field(() => String, {
+        nullable: true
+    })
     public readonly salary_meta_key: string = undefined;
 
-    @Field(() => String)
+    @Field(() => String, {
+        nullable: true
+    })
     public readonly field_name: string = undefined;
 
-    @Field(() => String)
+    @Field(() => String, {
+        nullable: true
+    })
     public readonly type: string = undefined;
 
-    @Field(() => Boolean)
+    @Field(() => Boolean, {
+        nullable: true
+    })
     public readonly disabled: boolean = undefined;
 
     constructor(initialValues?: SalaryStructureType){

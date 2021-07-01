@@ -1,4 +1,4 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { EmployeeSalariesRepositoryService } from "src/app/employee-salaries/employee-salaries-repository-service";
 import { SalaryStructureRepositoryService } from "../salary-structure-repository.service";
 import { DeleteSalaryStructureMutationModel } from "./delete-salary-structure-mutation.model";
@@ -20,7 +20,7 @@ export class DeleteSalaryStructureMutationService {
             return true;
         }else{
             this.Logger.debug(`Salary Field Cannot be deleted :: DeleteCount is ${deleteSalaryFild?.deletedCount}`);
-            return false;
+            throw new BadRequestException("Salary Field already deleted")
         }
 
     }

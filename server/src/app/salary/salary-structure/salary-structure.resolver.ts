@@ -25,6 +25,7 @@ export class SalaryStructureResolver {
         return await this.createSalaryMetaKeyMutationService.serve(operation).then(data => data);
     }
 
+    @UseGuards(GqlAuthGuard)
     @Mutation(() => Boolean)
     public async DeleteEmployeeSalaryStructureMetaField(@Args() _arguments: DeleteSalaryStructureMutationModel): Promise<GraphQLResolverResult<boolean>> {
 

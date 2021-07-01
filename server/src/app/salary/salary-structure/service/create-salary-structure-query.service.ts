@@ -18,7 +18,6 @@ export class ReadSalaryMetaKeysQueryService {
                 return new CreateSalaryMetaKeyMutationModel(salaryMetaField);
             })
         });
-        this.Logger.log("Reading SalaryMetaKeyFields");
 
         if (readSalaryMetaKey?.length > 0) {
             return readSalaryMetaKey;

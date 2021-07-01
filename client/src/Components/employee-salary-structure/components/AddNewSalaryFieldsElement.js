@@ -62,7 +62,6 @@ const AddNewSalaryFieldsElement = () => {
                   refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
                 })
                   .then((data) => {
-                    console.log(data);
                     toast.success(`☑ New Field ${salaryFields.field_name} added`);
                     setSalaryRequestLoading(false);
                   })
@@ -110,7 +109,7 @@ const AddNewSalaryFieldsElement = () => {
                   refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
                 })
                   .then((data) => {
-                    toast.success(`☑ New Field ${deductionFields.field_name} added`);
+                    toast.success(`🧾 New Field ${deductionFields.field_name} added`);
                     setDeductionRequestLoading(false);
                   })
                   .catch((error) => {

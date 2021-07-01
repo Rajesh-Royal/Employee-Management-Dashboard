@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { DollarSign, XCircle } from "react-feather";
 import Modal from "react-modal";
+import { toast } from "react-toastify";
 import { REMOVE_EMPLOYEE_SALARY_STRUCTURE } from "../../../core/gql-operations/mutation/remove-employee-salary-structure.mutation";
 import { READ_EMPLOYEE_SALARY_STRUCTURE } from "../../../core/gql-operations/query/read-employee-salary-structure-query";
 import { projectTheme } from "../../../Data/projectTheme";
@@ -20,13 +21,19 @@ const CreateEmployeeSalaryStructure = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // remove salaryField
-  const removeSalary = (fieldId) => {
+  const removeSalary = (fieldId, fieldName) => {
     removeEmployeeSalaryStructure({
       variables: {
         fieldId: fieldId,
       },
       refetchQueries: ["getEmployeeSalaryStructureMetaFields", "employeeListRead"],
-    });
+    })
+      .then(() => {
+        toast.success(`💰 Salary Field - ${fieldName}is Deleted`);
+      })
+      .catch((error) => {
+        toast.error(error?.message);
+      });
   };
   // closeModal
   const closeSalaryStructureModal = () => setModalIsOpen(false);
@@ -68,11 +75,13 @@ const CreateEmployeeSalaryStructure = () => {
                     ? EmployeeSalaryStructureData?.getEmployeeSalaryStructureMetaFields?.map(
                         (salaryField) => {
                           return salaryField?.type === "salary" ? (
-                            <div className="relative max-w-xs">
+                            <div className="relative max-w-xs" key={salaryField?._id}>
                               <XCircle
                                 className={`w-4 h-4 absolute -right-3 top-12 focus:outline-none cursor-pointer ${projectTheme.closeXButtonColor}`}
                                 aria-hidden="true"
-                                onClick={() => removeSalary(salaryField?._id)}
+                                onClick={() => {
+                                  removeSalary(salaryField?._id, salaryField?.field_name);
+                                }}
                               />
                               <FormInputBox
                                 key={salaryField?._id}
@@ -99,11 +108,13 @@ const CreateEmployeeSalaryStructure = () => {
                     ? EmployeeSalaryStructureData?.getEmployeeSalaryStructureMetaFields?.map(
                         (salaryField) => {
                           return salaryField?.type === "deduction" ? (
-                            <div className="relative max-w-xs">
+                            <div className="relative max-w-xs" key={salaryField?._id}>
                               <XCircle
                                 className={`w-4 h-4 absolute -right-3 top-12 focus:outline-none cursor-pointer ${projectTheme.closeXButtonColor}`}
                                 aria-hidden="true"
-                                onClick={() => removeSalary(salaryField?._id)}
+                                onClick={() => {
+                                  removeSalary(salaryField?._id, salaryField?.field_name);
+                                }}
                               />
                               <FormInputBox
                                 key={salaryField?._id}

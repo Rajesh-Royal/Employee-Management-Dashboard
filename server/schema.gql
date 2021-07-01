@@ -49,10 +49,10 @@ type ReadEmployeeSalaryDto {
 
 type CreateSalaryMetaKeyMutationModel {
   _id: ID
-  salary_meta_key: String!
-  field_name: String!
-  type: String!
-  disabled: Boolean!
+  salary_meta_key: String
+  field_name: String
+  type: String
+  disabled: Boolean
 }
 
 type EmployeeSalaryTypeDto {
