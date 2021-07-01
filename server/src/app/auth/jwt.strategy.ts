@@ -17,7 +17,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     async validate(payload: JwtPayload): Promise<AuthModuleType> {
-        this.Logger.log("validate")
         const { username } = payload;
         const user = await this.authRepositoryService.fineOne(username);
 
