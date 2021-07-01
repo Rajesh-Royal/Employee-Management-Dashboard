@@ -6,7 +6,19 @@ const Footer = () => {
       <a href="https://rajeshroyal.com" target="_blank" rel="noreferrer">
         <p>@Rajesh.royal</p>
       </a>
-      <p>database will reset at midnight everyday.</p>
+      <p>
+        database will reset at midnight everyday.
+        <a
+          href="https://heroku-employee-mgmt.herokuapp.com/"
+          className="text-blue-400"
+          target="_blank"
+          title="because free heroku server needs a cold start."
+          rel="noreferrer">
+          {" "}
+          Click here
+        </a>{" "}
+        if data is not loading.
+      </p>
     </footer>
   );
 };
