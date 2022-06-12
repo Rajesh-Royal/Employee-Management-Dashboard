@@ -11,6 +11,9 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a97f81a3-b54b-4933-aa7e-f11805328312/deploy-status)](https://app.netlify.com/sites/employee-management-nest-react/deploys)
 
 </div>
+
+<p align="center"><a href="https://github.com/Rajesh-Royal/Employee-Management-Dashboard/"><img src="https://user-images.githubusercontent.com/24524924/173211713-7fd30316-6e16-451d-b6f0-61783bc2e8b3.png" width="100%"/></a><a href="#"><img src="http://randojs.com/images/dropShadow.png" width="100%"/></a></p><br/>
+  
 > *project color theme can be changed from `src/data/projectTheme.js`*
 
 ## <p>Available Scripts :helicopter:</p>
